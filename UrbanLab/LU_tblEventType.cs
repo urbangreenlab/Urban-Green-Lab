@@ -22,10 +22,7 @@ namespace UrbanLab
         }
     
         public int Type_Id { get; set; }
-        public Nullable<int> Category_ID { get; set; }
         public string Category_Desc { get; set; }
-        public Nullable<int> Sub_Category_ID { get; set; }
-        public string Sub_Category_Desc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEvent_Info> tblEvent_Info { get; set; }

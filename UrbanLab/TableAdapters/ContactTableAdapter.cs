@@ -107,6 +107,20 @@ namespace UrbanLab.TableAdapters
             return r;
         }
 
+        internal List<tblEvent_Info> GetAllEvents()
+        {
+            misspiggyDBEntities DataContext = new misspiggyDBEntities();
+            var a = (from items in DataContext.tblEvent_Info
+                     select items);
+            if (a != null && a.Count() > 0)
+            {
+                return (from items in DataContext.tblEvent_Info
+                        select items).ToList();
+            }
+            else
+                return null;
+        }
+
         internal List<tblContact_Org> GetAllOrganizations()
         {
             misspiggyDBEntities DataContext = new misspiggyDBEntities();

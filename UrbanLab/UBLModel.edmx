@@ -28,6 +28,52 @@
           <Property Name="ErrorLine" Type="int" />
           <Property Name="ErrorMessage" Type="nvarchar" MaxLength="4000" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'misspiggyDB.dbo.LU_Date' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="LU_Date">
+          <Property Name="Date_Id" Type="date" />
+          <Property Name="Week_Id" Type="int" />
+          <Property Name="Week_Num" Type="smallint" />
+          <Property Name="Week_End_Date" Type="int" />
+          <Property Name="Month_Id" Type="int" />
+          <Property Name="Month_Id_Desc_S" Type="varchar" MaxLength="15" />
+          <Property Name="Month_Id_Desc_L" Type="varchar" MaxLength="15" />
+          <Property Name="Month_Num" Type="smallint" />
+          <Property Name="Month_Num_Desc_S" Type="varchar" MaxLength="15" />
+          <Property Name="Month_Num_Desc_L" Type="varchar" MaxLength="15" />
+          <Property Name="Qtr_Id" Type="int" />
+          <Property Name="Qtr_Desc" Type="varchar" MaxLength="15" />
+          <Property Name="Qtr_Num" Type="smallint" />
+          <Property Name="Qtr_Num_Desc_S" Type="varchar" MaxLength="15" />
+          <Property Name="Qtr_Num_Desc_L" Type="varchar" MaxLength="15" />
+          <Property Name="Semi_Annual_Id" Type="int" />
+          <Property Name="Semi_Annual_Desc" Type="varchar" MaxLength="20" />
+          <Property Name="Year_Id" Type="smallint" />
+          <Property Name="Day_Of_Week" Type="smallint" />
+          <Property Name="Dow_Desc_S" Type="varchar" MaxLength="15" />
+          <Property Name="Dow_Desc_L" Type="varchar" MaxLength="15" />
+          <Property Name="Day_Of_Month" Type="smallint" />
+          <Property Name="Day_Of_Qtr" Type="smallint" />
+          <Property Name="Day_Of_Year" Type="smallint" />
+          <Property Name="Days_In_Week" Type="smallint" />
+          <Property Name="Days_In_Month" Type="smallint" />
+          <Property Name="Days_In_Qtr" Type="smallint" />
+          <Property Name="Days_In_Year" Type="smallint" />
+          <Property Name="Month_Days_Left" Type="smallint" />
+          <Property Name="Week_Days_Left" Type="smallint" />
+          <Property Name="Qtr_Days_Left" Type="smallint" />
+          <Property Name="Year_Days_Left" Type="smallint" />
+          <Property Name="Week_Day_Flag" Type="smallint" />
+          <Property Name="Week_End_Flag" Type="smallint" />
+          <Property Name="Federal_Bank_Holiday_Flag" Type="char" MaxLength="1" />
+          <Property Name="Hca_Holiday_Flag" Type="char" MaxLength="1" />
+          <Property Name="Pe_Date" Type="date" />
+          <Property Name="Pe_Date_Prior_Month" Type="date" />
+          <Property Name="Week_Of_Month" Type="smallint" />
+          <Property Name="Bank_Day_Flag" Type="smallint" />
+          <Property Name="Qtr_Desc_DSS" Type="char" MaxLength="6" />
+          <Property Name="DW_Last_Update_Date_Time" Type="datetime" />
+        </EntityType>-->
         <EntityType Name="LU_tblContactType">
           <Key>
             <PropertyRef Name="Type_Id" />
@@ -54,10 +100,7 @@
             <PropertyRef Name="Type_Id" />
           </Key>
           <Property Name="Type_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Category_ID" Type="int" />
           <Property Name="Category_Desc" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Sub_Category_ID" Type="int" />
-          <Property Name="Sub_Category_Desc" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="LU_tblPgmRelationType">
           <Key>
@@ -83,6 +126,9 @@
           <Property Name="Create_Datetime" Type="datetime" />
           <Property Name="Modified_Datetime" Type="datetime" />
           <Property Name="Active_Ind" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Kindful_Contact_Id" Type="varchar" MaxLength="50" />
+          <Property Name="SalesForce_Contact_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Addr_Country" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tblContact_Person">
           <Key>
@@ -109,6 +155,9 @@
           <Property Name="Modified_Datetime" Type="datetime" />
           <Property Name="Active_Ind" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Org_Id" Type="bigint" />
+          <Property Name="Kindful_Contact_Id" Type="varchar" MaxLength="50" />
+          <Property Name="SalesForce_Contact_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Addr_Country" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tblContact_Person_Types">
           <Key>
@@ -148,14 +197,9 @@
           <Property Name="Tran_Date" Type="date" />
           <Property Name="Tran_Check_Num" Type="varchar" MaxLength="20" />
           <Property Name="Tran_Card_Last4" Type="char" MaxLength="4" />
-          <Property Name="Addr_Street1" Type="varchar" MaxLength="100" />
-          <Property Name="Addr_Street2" Type="varchar" MaxLength="100" />
-          <Property Name="Addr_City" Type="varchar" MaxLength="50" />
-          <Property Name="Addr_State" Type="varchar" MaxLength="50" />
-          <Property Name="Addr_ZipCode" Type="varchar" MaxLength="20" />
-          <Property Name="Addr_Country" Type="varchar" MaxLength="50" />
           <Property Name="Load_Datetime" Type="datetime" />
           <Property Name="Modified_Datetime" Type="datetime" />
+          <Property Name="Donor_Contact_Id" Type="bigint" />
         </EntityType>
         <EntityType Name="tblEvent_Info">
           <Key>
@@ -168,7 +212,7 @@
           <Property Name="Date" Type="date" />
           <Property Name="Planned_Start" Type="datetime" />
           <Property Name="Planned_End" Type="datetime" />
-          <Property Name="Event_Duration" Type="int" />
+          <Property Name="Event_Duration" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Location_Name" Type="varchar" MaxLength="255" />
           <Property Name="GPS_Location" Type="varchar" MaxLength="255" />
           <Property Name="Primary_Contact" Type="bigint" />
@@ -187,6 +231,7 @@
           <Property Name="Notes" Type="varchar" MaxLength="1000" />
           <Property Name="Photo_Release_Ind" Type="char" MaxLength="1" />
           <Property Name="Photo_Code" Type="varchar" MaxLength="255" />
+          <Property Name="Involved_Org_Cnt" Type="int" />
         </EntityType>
         <EntityType Name="tblEvent_Roster">
           <Key>
@@ -597,6 +642,18 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Contact_Person">
+          <End Role="tblContact_Person" Type="Self.tblContact_Person" Multiplicity="0..1" />
+          <End Role="tblContact_Org" Type="Self.tblContact_Org" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContact_Person">
+              <PropertyRef Name="Contact_Id" />
+            </Principal>
+            <Dependent Role="tblContact_Org">
+              <PropertyRef Name="Primary_Contact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CustomerAddress_Address_AddressID">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
           <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
@@ -909,6 +966,10 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
             <End Role="LU_tblEventStatus" EntitySet="LU_tblEventStatus" />
             <End Role="tblEvent_Info" EntitySet="tblEvent_Info" />
           </AssociationSet>
+          <AssociationSet Name="FK_Contact_Person" Association="Self.FK_Contact_Person">
+            <End Role="tblContact_Person" EntitySet="tblContact_Person" />
+            <End Role="tblContact_Org" EntitySet="tblContact_Org" />
+          </AssociationSet>
           <AssociationSet Name="FK_CustomerAddress_Address_AddressID" Association="Self.FK_CustomerAddress_Address_AddressID">
             <End Role="Address" EntitySet="Address" />
             <End Role="CustomerAddress" EntitySet="CustomerAddress" />
@@ -1041,6 +1102,10 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
             <End Role="tblContact_Org" EntitySet="tblContact_Org" />
             <End Role="tblContact_Person" EntitySet="tblContact_Person" />
           </AssociationSet>
+          <AssociationSet Name="FK_Contact_Person" Association="misspiggyDBModel.FK_Contact_Person">
+            <End Role="tblContact_Person" EntitySet="tblContact_Person" />
+            <End Role="tblContact_Org" EntitySet="tblContact_Org" />
+          </AssociationSet>
           <AssociationSet Name="FK__tblContac__Perso__70A8B9AE" Association="misspiggyDBModel.FK__tblContac__Perso__70A8B9AE">
             <End Role="tblContact_Person" EntitySet="tblContact_Person" />
             <End Role="tblContact_Person_Types" EntitySet="tblContact_Person_Types" />
@@ -1113,7 +1178,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
             <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
             <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="BuildVersion">
           <Key>
             <PropertyRef Name="SystemInformationID" />
@@ -1167,10 +1232,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
             <PropertyRef Name="Type_Id" />
           </Key>
           <Property Name="Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Category_ID" Type="Int32" />
           <Property Name="Category_Desc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Sub_Category_ID" Type="Int32" />
-          <Property Name="Sub_Category_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblEvent_Info" Relationship="misspiggyDBModel.FK__tblEvent___Event__2D27B809" FromRole="LU_tblEventType" ToRole="tblEvent_Info" />
           <NavigationProperty Name="tblEvent_Info1" Relationship="misspiggyDBModel.FK__tblEvent___Event__47DBAE45" FromRole="LU_tblEventType" ToRole="tblEvent_Info" />
         </EntityType>
@@ -1199,7 +1261,11 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <Property Name="Create_Datetime" Type="DateTime" Precision="3" />
           <Property Name="Modified_Datetime" Type="DateTime" Precision="3" />
           <Property Name="Active_Ind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Kindful_Contact_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SalesForce_Contact_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Addr_Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblContact_Person" Relationship="misspiggyDBModel.FK__tblContac__Org_I__56E8E7AB" FromRole="tblContact_Org" ToRole="tblContact_Person" />
+          <NavigationProperty Name="tblContact_Person1" Relationship="misspiggyDBModel.FK_Contact_Person" FromRole="tblContact_Org" ToRole="tblContact_Person" />
         </EntityType>
         <EntityType Name="tblContact_Person">
           <Key>
@@ -1226,7 +1292,11 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <Property Name="Modified_Datetime" Type="DateTime" Precision="3" />
           <Property Name="Active_Ind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="Org_Id" Type="Int64" />
+          <Property Name="Kindful_Contact_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SalesForce_Contact_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Addr_Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblContact_Org" Relationship="misspiggyDBModel.FK__tblContac__Org_I__56E8E7AB" FromRole="tblContact_Person" ToRole="tblContact_Org" />
+          <NavigationProperty Name="tblContact_Org1" Relationship="misspiggyDBModel.FK_Contact_Person" FromRole="tblContact_Person" ToRole="tblContact_Org" />
           <NavigationProperty Name="tblContact_Person_Types" Relationship="misspiggyDBModel.FK__tblContac__Perso__70A8B9AE" FromRole="tblContact_Person" ToRole="tblContact_Person_Types" />
           <NavigationProperty Name="tblContact_PgmRelation_Types" Relationship="misspiggyDBModel.FK__tblContac__PgmRe__7C1A6C5A" FromRole="tblContact_Person" ToRole="tblContact_PgmRelation_Types" />
           <NavigationProperty Name="tblEvent_Roster" Relationship="misspiggyDBModel.FK__tblEvent___Conta__3F466844" FromRole="tblContact_Person" ToRole="tblEvent_Roster" />
@@ -1275,14 +1345,9 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <Property Name="Tran_Date" Type="DateTime" Precision="0" />
           <Property Name="Tran_Check_Num" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Tran_Card_Last4" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="Addr_Street1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Addr_Street2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Addr_City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Addr_State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Addr_ZipCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Addr_Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Load_Datetime" Type="DateTime" Precision="3" />
           <Property Name="Modified_Datetime" Type="DateTime" Precision="3" />
+          <Property Name="Donor_Contact_Id" Type="Int64" />
         </EntityType>
         <EntityType Name="tblEvent_Info">
           <Key>
@@ -1295,7 +1360,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Planned_Start" Type="DateTime" Precision="3" />
           <Property Name="Planned_End" Type="DateTime" Precision="3" />
-          <Property Name="Event_Duration" Type="Int32" />
+          <Property Name="Event_Duration" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="Location_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="GPS_Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Primary_Contact" Type="Int64" />
@@ -1314,6 +1379,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="Photo_Release_Ind" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="Photo_Code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Involved_Org_Cnt" Type="Int32" />
           <NavigationProperty Name="LU_tblEventStatus" Relationship="misspiggyDBModel.FK__tblEvent___Statu__2E1BDC42" FromRole="tblEvent_Info" ToRole="LU_tblEventStatus" />
           <NavigationProperty Name="LU_tblEventStatus1" Relationship="misspiggyDBModel.FK__tblEvent___Statu__49C3F6B7" FromRole="tblEvent_Info" ToRole="LU_tblEventStatus" />
           <NavigationProperty Name="LU_tblEventType" Relationship="misspiggyDBModel.FK__tblEvent___Event__2D27B809" FromRole="tblEvent_Info" ToRole="LU_tblEventType" />
@@ -1678,6 +1744,18 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Contact_Person">
+          <End Type="misspiggyDBModel.tblContact_Person" Role="tblContact_Person" Multiplicity="0..1" />
+          <End Type="misspiggyDBModel.tblContact_Org" Role="tblContact_Org" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContact_Person">
+              <PropertyRef Name="Contact_Id" />
+            </Principal>
+            <Dependent Role="tblContact_Org">
+              <PropertyRef Name="Primary_Contact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tblContac__Perso__70A8B9AE">
           <End Type="misspiggyDBModel.tblContact_Person" Role="tblContact_Person" Multiplicity="0..1" />
           <End Type="misspiggyDBModel.tblContact_Person_Types" Role="tblContact_Person_Types" Multiplicity="*" />
@@ -1896,7 +1974,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1974,10 +2052,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <EntitySetMapping Name="LU_tblEventType">
             <EntityTypeMapping TypeName="misspiggyDBModel.LU_tblEventType">
               <MappingFragment StoreEntitySet="LU_tblEventType">
-                <ScalarProperty Name="Sub_Category_Desc" ColumnName="Sub_Category_Desc" />
-                <ScalarProperty Name="Sub_Category_ID" ColumnName="Sub_Category_ID" />
                 <ScalarProperty Name="Category_Desc" ColumnName="Category_Desc" />
-                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
                 <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1993,6 +2068,9 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <EntitySetMapping Name="tblContact_Org">
             <EntityTypeMapping TypeName="misspiggyDBModel.tblContact_Org">
               <MappingFragment StoreEntitySet="tblContact_Org">
+                <ScalarProperty Name="Addr_Country" ColumnName="Addr_Country" />
+                <ScalarProperty Name="SalesForce_Contact_Id" ColumnName="SalesForce_Contact_Id" />
+                <ScalarProperty Name="Kindful_Contact_Id" ColumnName="Kindful_Contact_Id" />
                 <ScalarProperty Name="Active_Ind" ColumnName="Active_Ind" />
                 <ScalarProperty Name="Modified_Datetime" ColumnName="Modified_Datetime" />
                 <ScalarProperty Name="Create_Datetime" ColumnName="Create_Datetime" />
@@ -2012,6 +2090,9 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <EntitySetMapping Name="tblContact_Person">
             <EntityTypeMapping TypeName="misspiggyDBModel.tblContact_Person">
               <MappingFragment StoreEntitySet="tblContact_Person">
+                <ScalarProperty Name="Addr_Country" ColumnName="Addr_Country" />
+                <ScalarProperty Name="SalesForce_Contact_Id" ColumnName="SalesForce_Contact_Id" />
+                <ScalarProperty Name="Kindful_Contact_Id" ColumnName="Kindful_Contact_Id" />
                 <ScalarProperty Name="Org_Id" ColumnName="Org_Id" />
                 <ScalarProperty Name="Active_Ind" ColumnName="Active_Ind" />
                 <ScalarProperty Name="Modified_Datetime" ColumnName="Modified_Datetime" />
@@ -2061,14 +2142,9 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <EntitySetMapping Name="tblDonation_Info">
             <EntityTypeMapping TypeName="misspiggyDBModel.tblDonation_Info">
               <MappingFragment StoreEntitySet="tblDonation_Info">
+                <ScalarProperty Name="Donor_Contact_Id" ColumnName="Donor_Contact_Id" />
                 <ScalarProperty Name="Modified_Datetime" ColumnName="Modified_Datetime" />
                 <ScalarProperty Name="Load_Datetime" ColumnName="Load_Datetime" />
-                <ScalarProperty Name="Addr_Country" ColumnName="Addr_Country" />
-                <ScalarProperty Name="Addr_ZipCode" ColumnName="Addr_ZipCode" />
-                <ScalarProperty Name="Addr_State" ColumnName="Addr_State" />
-                <ScalarProperty Name="Addr_City" ColumnName="Addr_City" />
-                <ScalarProperty Name="Addr_Street2" ColumnName="Addr_Street2" />
-                <ScalarProperty Name="Addr_Street1" ColumnName="Addr_Street1" />
                 <ScalarProperty Name="Tran_Card_Last4" ColumnName="Tran_Card_Last4" />
                 <ScalarProperty Name="Tran_Check_Num" ColumnName="Tran_Check_Num" />
                 <ScalarProperty Name="Tran_Date" ColumnName="Tran_Date" />
@@ -2089,6 +2165,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <EntitySetMapping Name="tblEvent_Info">
             <EntityTypeMapping TypeName="misspiggyDBModel.tblEvent_Info">
               <MappingFragment StoreEntitySet="tblEvent_Info">
+                <ScalarProperty Name="Involved_Org_Cnt" ColumnName="Involved_Org_Cnt" />
                 <ScalarProperty Name="Photo_Code" ColumnName="Photo_Code" />
                 <ScalarProperty Name="Photo_Release_Ind" ColumnName="Photo_Release_Ind" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
@@ -2350,7 +2427,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

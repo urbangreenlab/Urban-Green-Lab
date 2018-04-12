@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using UrbanLab.Logic;
 using UrbanLab.Responses;
 
@@ -10,7 +6,6 @@ namespace UrbanLab.Controllers
 {
     public class ContactController : ApiController
     {
-
         public ContactController()
         {
         }
@@ -39,13 +34,20 @@ namespace UrbanLab.Controllers
             return cl.CreateOrganization(request);
         }
 
-
         [HttpGet]
         [Route("GetOrganization")]
         public ContactOrganizationList GetOrganizations()
         {
             ContactLogic cl = new ContactLogic();
             return cl.GetOrganizations();
+        }
+
+        [HttpGet]
+        [Route("GetEventInfo")]
+        public EventInfoList GetEventInfo()
+        {
+            ContactLogic cl = new ContactLogic();
+            return cl.GetEventInfo();
         }
     }
 }
