@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="row project-row">
+                <div class="col">
+                    <a ng-href="#/landing/{{data.Dept}}" ng-click="projectDetails()">{{data.Name}}</a>
+                </div>
+                <div class="col">{{data.Dept}}</div>
+                <div class="col">{{data.OpEx}}</div>
+                <div class="col">{{data.CapEx}}</div>
+            </div>
+        </div>
+        <div class="col-md-4" ng-if="$parent.showDeets">
+            <pdetails detailData="$parent.thisProject[0]"></pdetails>
+        </div>
+    </div>
+</div>
