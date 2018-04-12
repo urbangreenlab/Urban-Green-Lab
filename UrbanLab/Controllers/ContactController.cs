@@ -38,5 +38,14 @@ namespace UrbanLab.Controllers
             ContactLogic cl = new ContactLogic();
             return cl.CreateOrganization(request);
         }
+
+
+        [HttpGet]
+        [Route("GetOrganization")]
+        public ContactOrganizationList GetOrganizations()
+        {
+            ContactLogic cl = new ContactLogic();
+            return cl.GetOrganizations();
+        }
     }
 }

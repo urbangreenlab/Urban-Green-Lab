@@ -60,7 +60,49 @@ namespace UrbanLab.Logic
             return response;
         }
 
-        public BaseResponse CreateOrganization(ContactOrganization request)
+        internal ContactOrganizationList GetOrganizations()
+        {
+            ContactOrganizationList response = new ContactOrganizationList();
+            List<ContactOrganization> contactsList = new List<ContactOrganization>();
+            var a = ContactTableAdapter.GetAllOrganizations();
+            try
+            {
+                if (a != null)
+                {
+                    foreach (var b in a)
+                    {
+                        ContactOrganization c = new ContactOrganization();
+                        c.Active_Ind = b.Active_Ind;
+                        c.Addr_City = b.Addr_City;
+                        c.Addr_State = b.Addr_State;
+                        c.Addr_Street = b.Addr_Street;
+                        c.Addr_ZipCode = b.Addr_ZipCode;
+                        c.Create_Datetime = b.Create_Datetime.HasValue?b.Create_Datetime.Value: DateTime.MinValue;
+                        c.Email_Id = b.Email_Id;
+                        c.Modified_Datetime = b.Modified_Datetime.HasValue ? b.Modified_Datetime.Value : DateTime.MinValue;
+                        c.Org_Id = b.Org_Id;
+                        c.Org_Name = b.Org_Name;
+                        c.Phone_Number = b.Phone_Number;
+                        c.Phone_Type = b.Phone_Type;
+                        c.Primary_Contact = b.Primary_Contact.HasValue ? b.Primary_Contact.Value : 0;
+                        contactsList.Add(c);
+                    }
+                }
+
+                response.ContactOrganization = contactsList;
+                response.Success = true;
+                response.Message = contactsList.Count + " organizations returned.";
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+
+            return response;
+        }
+
+public BaseResponse CreateOrganization(ContactOrganization request)
         {
             BaseResponse response = new BaseResponse();
             var a = ContactTableAdapter.CreateContactOrganization(request);

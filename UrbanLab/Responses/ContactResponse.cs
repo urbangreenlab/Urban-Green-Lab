@@ -5,7 +5,7 @@ using System.Web;
 
 namespace UrbanLab.Responses
 {
-    public class ContactOrganization : BaseResponse
+    public class ContactOrganization
     {
         public long Org_Id { get; set; }
         public string Org_Name { get; set; }
@@ -51,6 +51,11 @@ namespace UrbanLab.Responses
     public class ContactPersonList : BaseResponse
     {
         public List<ContactPerson> ContactPeson { get; set; }
+    }
+
+    public class ContactOrganizationList : BaseResponse
+    {
+        public List<ContactOrganization> ContactOrganization { get; set; }
     }
 
     public class ContactTypeResponse
