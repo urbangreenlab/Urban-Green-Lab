@@ -10,7 +10,7 @@ namespace UrbanLab.Responses
         public long Org_Id { get; set; }
         public string Org_Name { get; set; }
         public string Email_Id { get; set; }
-        public string Primary_Contact { get; set; }
+        public long Primary_Contact { get; set; }
         public string Addr_Street { get; set; }
         public string Addr_City { get; set; }
         public string Addr_State { get; set; }
@@ -23,7 +23,7 @@ namespace UrbanLab.Responses
     }
 
 
-    public class ContactPerson:BaseResponse
+    public class ContactPerson
     {
         public long Contact_Id { get; set; }
         public string First_Name { get; set; }
@@ -45,9 +45,13 @@ namespace UrbanLab.Responses
         public DateTime Create_Datetime { get; set; }
         public DateTime Modified_Datetime { get; set; }
         public string Active_Ind { get; set; }
-        public long Org_Id { get; set; }
+        public long? Org_Id { get; set; }
     }
 
+    public class ContactPersonList : BaseResponse
+    {
+        public List<ContactPerson> ContactPeson { get; set; }
+    }
 
     public class ContactTypeResponse
     {

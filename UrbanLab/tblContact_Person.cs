@@ -17,13 +17,14 @@ namespace UrbanLab
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblContact_Person()
         {
+            this.tblContact_Person_Types = new HashSet<tblContact_Person_Types>();
+            this.tblContact_PgmRelation_Types = new HashSet<tblContact_PgmRelation_Types>();
             this.tblEvent_Roster = new HashSet<tblEvent_Roster>();
             this.tblEvent_Info = new HashSet<tblEvent_Info>();
             this.tblEvent_Info1 = new HashSet<tblEvent_Info>();
         }
     
         public long Contact_Id { get; set; }
-        public Nullable<int> Contact_Type_Id { get; set; }
         public string First_Name { get; set; }
         public string Last_Name { get; set; }
         public string Name_Prefix { get; set; }
@@ -45,8 +46,11 @@ namespace UrbanLab
         public string Active_Ind { get; set; }
         public Nullable<long> Org_Id { get; set; }
     
-        public virtual LU_tblContactType LU_tblContactType { get; set; }
         public virtual tblContact_Org tblContact_Org { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblContact_Person_Types> tblContact_Person_Types { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblContact_PgmRelation_Types> tblContact_PgmRelation_Types { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEvent_Roster> tblEvent_Roster { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

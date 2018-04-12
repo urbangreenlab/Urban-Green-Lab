@@ -273,6 +273,9 @@
     <Compile Include="LU_tblEventType.cs">
       <DependentUpon>UBLModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="LU_tblEvent_Role.cs">
+      <DependentUpon>UBLModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="LU_tblPgmRelationType.cs">
       <DependentUpon>UBLModel.tt</DependentUpon>
     </Compile>
@@ -314,6 +317,12 @@
       <DependentUpon>UBLModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblContact_Person.cs">
+      <DependentUpon>UBLModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblContact_Person_Types.cs">
+      <DependentUpon>UBLModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblContact_PgmRelation_Types.cs">
       <DependentUpon>UBLModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDonation_Info.cs">
