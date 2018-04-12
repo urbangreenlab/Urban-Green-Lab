@@ -7,15 +7,12 @@ using UrbanLab.Responses;
 
 namespace UrbanLab.TableAdapters
 {
-    public class ContactTableAdapter: BaseTableAdapter
+    public class ContactTableAdapter : BaseTableAdapter
     {
-        private AuditClient auditClient;
-
-
         #region Constructor
-        public ContactTableAdapter(AuditClient auditClient):base(auditClient)
+        public ContactTableAdapter(AuditClient auditClient) : base(auditClient)
         {
-           
+
         }
 
         #endregion
@@ -25,7 +22,7 @@ namespace UrbanLab.TableAdapters
         public List<tblContact_Person> GetAllContacts()
         {
             misspiggyDBEntities DataContext = new misspiggyDBEntities();
-            var a =  (from items in DataContext.tblContact_Person
+            var a = (from items in DataContext.tblContact_Person
                      select items);
             if (a != null && a.Count() > 0)
             {
@@ -64,15 +61,19 @@ namespace UrbanLab.TableAdapters
             p.Active_Ind = "Y";
 
             d.tblContact_Person.Add(p);
+            BaseResponse r = new BaseResponse();
             try
             {
                 d.SaveChanges();
+                r.Success = true;
+                r.Message = "Contact save successfull.";
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                r.Success = false;
+                r.Message = "Contact save unsuccessfull. Error: "+ e.Message;
 
             }
-            BaseResponse r = new BaseResponse();
             return r;
         }
 
@@ -103,8 +104,25 @@ namespace UrbanLab.TableAdapters
             {
                 r.Success = false;
                 r.Message = e.Message;
-            }          
+            }
             return r;
+        }
+
+        internal tblContact_Person GetAllDetailsByContactID(int contactID)
+        {
+            misspiggyDBEntities DataContext = new misspiggyDBEntities();
+            var a = (from items in DataContext.tblContact_Person
+                     where items.Contact_Id == contactID
+                     select items);
+            if (a != null && a.Count() > 0)
+            {
+                return (from items in DataContext.tblContact_Person
+                        where items.Contact_Id == contactID                        
+                        select items).FirstOrDefault();
+            }
+            else
+                return null;
+
         }
 
         internal List<tblEvent_Info> GetAllEvents()
@@ -133,6 +151,73 @@ namespace UrbanLab.TableAdapters
             }
             else
                 return null;
+        }
+
+        internal tblContact_Org GetAllOrganizationByID(int OrgID)
+        {
+            misspiggyDBEntities DataContext = new misspiggyDBEntities();
+            var a = (from items in DataContext.tblContact_Org
+                     where items.Org_Id == OrgID
+                     select items);
+            if (a != null && a.Count() > 0)
+            {
+                return (from items in DataContext.tblContact_Org
+                        where items.Org_Id == OrgID
+                        select items).FirstOrDefault();
+            }
+            else
+                return null;
+        }
+
+        internal BaseResponse CreateEventInfo(EventInfo request)
+        {
+            misspiggyDBEntities d = new misspiggyDBEntities();
+            tblEvent_Info e = new tblEvent_Info();
+
+            e.Event_Id = request.Event_Id;
+            e.Event_Type_Id = request.Event_Type_Id;
+            e.Title = request.Title;
+            e.Status = request.Status;
+            e.Event_Date = request.Date;
+            e.Planned_Start = request.Planned_Start;
+            e.Planned_End = request.Planned_End;
+            e.Event_Duration = request.Event_Duration;
+            e.Location_Name = request.Location_Name;
+            e.GPS_Location = request.GPS_Location;
+            e.Primary_Contact = request.Primary_Contact;
+            e.Addr_Street = request.Addr_Street;
+            e.Addr_City = request.Addr_City;
+            e.Addr_State = request.Addr_State;
+            e.Addr_ZipCode = request.Addr_ZipCode;
+            e.Create_Datetime = request.Create_Datetime;
+            e.Modified_Datetime = request.Modified_Datetime;
+            e.Active_Ind = request.Active_Ind;
+            e.Adult_Cnt = request.Adult_Cnt;
+            e.Child_Cnt = request.Child_Cnt;
+            e.Mileage = request.Mileage;
+            e.Average_Score = request.Average_Score;
+            e.Revenue = request.Revenue;
+            e.Notes = request.Notes;
+            e.Photo_Release_Ind = request.Photo_Release_Ind;
+            e.Photo_Code = request.Photo_Code;
+            e.Involved_Org_Cnt = request.Involved_Org_Cnt; 
+
+            d.tblEvent_Info.Add(e);
+
+            BaseResponse r = new BaseResponse();
+            try
+            {
+                d.SaveChanges();
+                r.Success = true;
+                r.Message = "Successfully created Event.";
+            }
+            catch (Exception f)
+            {
+                r.Success = true;
+                r.Message = "Event creation unsuccessful. Error: " + f.Message;
+            }
+            
+            return r;
         }
 
         #endregion

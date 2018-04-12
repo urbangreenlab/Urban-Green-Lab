@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UrbanLab.Responses
 {
-    public class ContactOrganization
+    public class ContactOrganization:BaseResponse
     {
         public long Org_Id { get; set; }
         public string Org_Name { get; set; }
@@ -21,7 +21,7 @@ namespace UrbanLab.Responses
     }
 
 
-    public class ContactPerson
+    public class ContactPerson:BaseResponse
     {
         public long Contact_Id { get; set; }
         public string First_Name { get; set; }
@@ -54,6 +54,15 @@ namespace UrbanLab.Responses
     public class ContactOrganizationList : BaseResponse
     {
         public List<ContactOrganization> ContactOrganization { get; set; }
+    }
+
+    public class ContactOrgAndEvent : BaseResponse
+    {
+        public ContactPerson ContactPerson { get; set; }
+        public List<ContactOrganization> ContactOrganization { get; set; }
+        public List<EventInfo> ContactEventInfo { get; set; }
+
+       
     }
 
    public class EventInfoList: BaseResponse
@@ -89,7 +98,7 @@ namespace UrbanLab.Responses
         public string Notes { get; set; }
         public string Photo_Release_Ind { get; set; }
         public string Photo_Code { get; set; }
-        public int Involved_Org_Cnt { get; set; }
+        public int Involved_Org_Cnt { get; set; }        
     }
     public class ContactTypeResponse
     {
@@ -101,5 +110,5 @@ namespace UrbanLab.Responses
     {
         public bool Success { get; set; }
         public string Message { get; set; }
-    }
+    }    
 }

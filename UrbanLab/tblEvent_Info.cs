@@ -24,7 +24,7 @@ namespace UrbanLab
         public Nullable<int> Event_Type_Id { get; set; }
         public string Title { get; set; }
         public Nullable<int> Status { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<System.DateTime> Event_Date { get; set; }
         public Nullable<System.DateTime> Planned_Start { get; set; }
         public Nullable<System.DateTime> Planned_End { get; set; }
         public Nullable<decimal> Event_Duration { get; set; }

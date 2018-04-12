@@ -18,6 +18,14 @@ namespace UrbanLab.Controllers
             return cl.GetContacts();
         }
 
+        [HttpGet]
+        [Route("GetContactByID")]
+        public ContactPerson GetContacts(int ContactID)
+        {
+            ContactLogic cl = new ContactLogic();
+            return cl.GetContactByID(ContactID);
+        }
+
         [HttpPost]
         [Route("CreateContact")]
         public BaseResponse CreateContact(ContactPerson request)
@@ -48,6 +56,14 @@ namespace UrbanLab.Controllers
         {
             ContactLogic cl = new ContactLogic();
             return cl.GetEventInfo();
+        }
+
+        [HttpPost]
+        [Route("CreateEvent")]
+        public BaseResponse CreateEvent(EventInfo request)
+        {
+            ContactLogic cl = new ContactLogic();
+            return cl.CreateEventInfo(request);
         }
     }
 }

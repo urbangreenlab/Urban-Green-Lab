@@ -73,6 +73,7 @@ warning 6013: The table/view 'misspiggyDB.dbo.LU_Date' does not have a primary k
           <Property Name="Bank_Day_Flag" Type="smallint" />
           <Property Name="Qtr_Desc_DSS" Type="char" MaxLength="6" />
           <Property Name="DW_Last_Update_Date_Time" Type="datetime" />
+          <Property Name="Source_System_Code" Type="char" MaxLength="1" />
         </EntityType>-->
         <EntityType Name="LU_tblContactType">
           <Key>
@@ -100,7 +101,7 @@ warning 6013: The table/view 'misspiggyDB.dbo.LU_Date' does not have a primary k
             <PropertyRef Name="Type_Id" />
           </Key>
           <Property Name="Type_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Category_Desc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type_Desc" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="LU_tblPgmRelationType">
           <Key>
@@ -209,7 +210,7 @@ warning 6013: The table/view 'misspiggyDB.dbo.LU_Date' does not have a primary k
           <Property Name="Event_Type_Id" Type="int" />
           <Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Status" Type="int" />
-          <Property Name="Date" Type="date" />
+          <Property Name="Event_Date" Type="date" />
           <Property Name="Planned_Start" Type="datetime" />
           <Property Name="Planned_End" Type="datetime" />
           <Property Name="Event_Duration" Type="decimal" Precision="5" Scale="2" />
@@ -1232,7 +1233,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
             <PropertyRef Name="Type_Id" />
           </Key>
           <Property Name="Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Category_Desc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type_Desc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblEvent_Info" Relationship="misspiggyDBModel.FK__tblEvent___Event__2D27B809" FromRole="LU_tblEventType" ToRole="tblEvent_Info" />
           <NavigationProperty Name="tblEvent_Info1" Relationship="misspiggyDBModel.FK__tblEvent___Event__47DBAE45" FromRole="LU_tblEventType" ToRole="tblEvent_Info" />
         </EntityType>
@@ -1357,7 +1358,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <Property Name="Event_Type_Id" Type="Int32" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="Int32" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Event_Date" Type="DateTime" Precision="0" />
           <Property Name="Planned_Start" Type="DateTime" Precision="3" />
           <Property Name="Planned_End" Type="DateTime" Precision="3" />
           <Property Name="Event_Duration" Type="Decimal" Precision="5" Scale="2" />
@@ -2052,7 +2053,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
           <EntitySetMapping Name="LU_tblEventType">
             <EntityTypeMapping TypeName="misspiggyDBModel.LU_tblEventType">
               <MappingFragment StoreEntitySet="LU_tblEventType">
-                <ScalarProperty Name="Category_Desc" ColumnName="Category_Desc" />
+                <ScalarProperty Name="Type_Desc" ColumnName="Type_Desc" />
                 <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2187,7 +2188,7 @@ warning 6002: The table/view 'misspiggyDB.sys.database_firewall_rules' does not 
                 <ScalarProperty Name="Event_Duration" ColumnName="Event_Duration" />
                 <ScalarProperty Name="Planned_End" ColumnName="Planned_End" />
                 <ScalarProperty Name="Planned_Start" ColumnName="Planned_Start" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Event_Date" ColumnName="Event_Date" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Event_Type_Id" ColumnName="Event_Type_Id" />
