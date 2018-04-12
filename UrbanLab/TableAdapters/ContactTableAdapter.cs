@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DataAccess.Audit;
@@ -34,6 +35,13 @@ namespace UrbanLab.TableAdapters
             else
                 return null;
         }
+
+        //public object CreateContactPerson(ContactPerson request)
+        //{
+        //    misspiggyDBEntities d = new misspiggyDBEntities();
+        //    d.tblContact_Person cp = new d.tblContact_Person();
+
+        //}
         
         #endregion
     }

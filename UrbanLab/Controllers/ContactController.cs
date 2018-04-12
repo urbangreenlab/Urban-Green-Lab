@@ -20,10 +20,16 @@ namespace UrbanLab.Controllers
         [Route("GetContact")]
         public List<ContactPerson> GetContacts()
         {
-            
-
             ContactLogic cl = new ContactLogic();
             return cl.GetContacts();
+        }
+
+        [HttpPost]
+        [Route("CreateContact")]
+        public BaseResponse CreateContact(ContactPerson request)
+        {
+            ContactLogic cl = new ContactLogic();
+            return cl.CreateContact(request);
         }
     }
 }
