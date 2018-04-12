@@ -1,0 +1,38 @@
+html{
+	font-size:1vw !important;
+}
+form .label {
+    -ms-flex: 0 0 12%;
+    flex: 0 0 12%;
+
+    text-align: right;
+	margin-right: 1em;
+	max-width: 12%;
+}
+form .label-large {
+	-ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+
+    text-align: right;
+	margin-right: 1em;
+	max-width: 20%;
+}
+.section-label {
+	font-weight: 700;
+}
+.lvl-0 {
+	font-size: 2rem;
+}
+.lvl-1 {
+	font-size: 1.5rem;
+	margin-left: 3rem;
+}
+/* .lvl-sub { 
+	margin-left: 4rem; 
+ } */
+select.dropdown{
+	height: 2rem;
+}
+.fc-button-group, .fc button {
+    display: unset !important;
+}
