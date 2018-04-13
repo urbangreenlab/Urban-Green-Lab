@@ -7,7 +7,7 @@ angular
             value: function () {
 
                 return $http({
-                    "url": `${API.URL}/GetContactInfo`,
+                    "url": `${API.URL}/GetContact`,
                     "method": "GET"
                 }).then(response => {
                     const data = response.data

@@ -70,9 +70,9 @@ function createContacts() {
         contact = {
             Id: i + 89434,
             Title: "Big Boss",
-            Prefix: "abc" + i,
-            FirstName: "abc" + i,
-            LastName: "abc" + i,
+            Prefix: "Ms",
+            FirstName: "First" + i,
+            LastName: "Last" + i,
             Street: "abc" + i,
             City: "abc" + i,
             State: "abc" + i,

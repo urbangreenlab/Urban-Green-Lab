@@ -4,72 +4,110 @@
             <div class="row">
                 <div class="col">
                     <div class="save-edit">
-                        <i class="fa fa-plus"> Create</i>
+                        <i class="fa fa-plus" ng-click="openModal('New')"> Create</i>
                     </div>
                 </div>
                 <div class="col">
                     <div class="save-edit">
-                        <i class="fa fa-edit"> Edit</i>
+                        <i class="fa fa-edit" ng-click="openModal('Edit', thisContact)"> Edit</i>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-8" ng-init="selection={}">
+            <div class="row">
+                <div class="col filters">
+                    <input type="search" ng-model="search" placeholder="Search...">
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col filters">
+                    <span>Program</span>
+                    <select class="dropdown filter" type="button" ng-model="selection.program" ng-options="p.Value as p.Name for p in programFilter">
+                        <option value=''>All</option>
+                    </select>
+                </div>
+                <div class="col filters">
+                    <span>Type</span>
+                    <select class="dropdown filter" type="button" ng-model="selection.type" ng-options="p.Value as p.Name for p in programFilter">
+                        <option value=''>All</option>
+                    </select>
+                </div>
+                <div class="col filters">
+                    <span>Org</span>
+                    <select class="dropdown filter" type="button" ng-model="selection.org" ng-options="p.Value as p.Name for p in programFilter">
+                        <option value=''>All</option>
+                    </select>
+                </div>
+                <div class="col filters">
+                    <span>Volunteer</span>
+                    <select class="dropdown filter" type="button" ng-model="selection.volunteer" ng-options="p.Value as p.Name for p in programFilter">
+                        <option value=''>All</option>
+                    </select>
+                </div>
+                <!-- <div class="col filters">
+                    <input type="search" ng-model="search" placeholder="Search...">
+                </div> -->
+            </div>
+        </div>
     </div>
-    <div class="row">   
+    <div class="row">
         <div class="col-4 contact-information">
             <info data="thisContact"></info>
         </div>
         <div class="col-8 contact-list">
             <div class="row">
-                <div class="col">
+                <div class="col-3">
                     <span class="column-label">
                         Name
                     </span>
                 </div>
-                <div class="col">
+                <div class="col-3">
                     <span class="column-label">
-                        Email
+                        Email_Id
                     </span>
                 </div>
-                <div class="col">
+                <div class="col-2">
                     <span class="column-label">
                         Phone
                     </span>
                 </div>
-                <div class="col">
+                <div class="col-1">
                     <span class="column-label">
                         Contact Type
                     </span>
                 </div>
-                <div class="col">
+                <div class="col-1">
                     <span class="column-label">
                         Program Relation
                     </span>
                 </div>
-                <div class="col">
+                <div class="col-1">
                     <span class="column-label">
                         Organization
                     </span>
                 </div>
             </div>
-            <div ng-click="contactInfo(contact)" class="row" ng-repeat="contact in contacts">
-                <div class="col">
-                    {{contact.FirstName}}
+            <div ng-click="contactInfo(contact)" class="row" ng-repeat="contact in getContacts(contacts)">
+                <div class="col-3">
+                    {{contact.First_Name}} {{contact.Last_Name}}
                 </div>
-                <div class="col">
-                    {{contact.Email}}
+                <div class="col-3">
+                    {{contact.Email_Id}}
                 </div>
-                <div class="col">
-                    {{contact.phone}}
+                <div class="col-2">
+                    {{contact.Phone_Cell}} </br>
+                    {{contact.Phone_Other}}
                 </div>
-                <div class="col">
-                    {{contact.ContactType}}
+                <div class="col-1">
+                    {{contact.ContactTypeIdList}}
                 </div>
-                <div class="col">
-                    {{contact.ProgramRelation}}
+                <div class="col-1">
+                    {{contact.Related_Program}}
                 </div>
-                <div class="col">
-                    {{contact.Organization}}
+                <div class="col-1">
+                    {{contact.Org_Id}}
                 </div>
             </div>
         </div>
