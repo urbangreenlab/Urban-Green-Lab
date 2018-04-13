@@ -47,6 +47,7 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
       console.log('date',date);
       // This event will display the clicked events info 
       // on the left side bar
+      $scope.thisEvent = date;
       $scope.alertMessage = (date.title + ' was clicked ');
   };
   /* alert on Drop */
