@@ -40,7 +40,7 @@ var App = angular.module('Urban',
                 templateUrl: '../src/templates/organizationInfo.html',
                 controller: 'OrganizationInfoController'
             })
-            /*
+            
             .when('/allContacts',{
                 templateUrl: '../src/templates/allContacts.html',
                 controller: 'AllContacts'
@@ -48,7 +48,7 @@ var App = angular.module('Urban',
             .when('/allOrganizations',{
                 templateUrl: '../src/templates/allOrganizations.html',
                 controller: 'AllOrganizations'
-            })*/
+            })
             .otherwise({
                 redirectTo: '/landing'
             });

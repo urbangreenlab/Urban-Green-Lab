@@ -18,7 +18,7 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
           event.end = event.Planned_End;
           $scope.events.push(event);
       });
-      console.log('see logggg',events);
+      console.log('see logggg',events.EventInfo);
       
   });
   
