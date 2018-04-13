@@ -40,17 +40,17 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
       .then(eventInfo=>{
         console.log('event nifo ',eventInfo);
         $scope.thisEvent = eventInfo;
-        return EventFactory.getEventType(eventInfo.Event_Type_Id);
-      })
-      .then(eventType=>{
-        eventType.LookUp.forEach(et=>{
-          if($scope.thisEvent.Event_Type_Id == et.TypeID){
-            $scope.thisEvent.Event_Type = et.TypeDescription;
-          }
-        })
-        console.log('event type',eventType);
+        // return EventFactory.getEventType(eventInfo.Event_Type_Id);
+        // console.log('event type',eventType);
         console.log('scope this evnet',$scope.thisEvent);
       })
+      // .then(eventType=>{
+      //   eventType.LookUp.forEach(et=>{
+      //     if($scope.thisEvent.Event_Type_Id == et.TypeID){
+      //       $scope.thisEvent.Event_Type = et.TypeDescription;
+      //     }
+      //   })
+      // })
   };
 
   /* alert on Move/Drop */

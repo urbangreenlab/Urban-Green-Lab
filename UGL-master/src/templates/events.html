@@ -22,18 +22,16 @@
                     <div class="row">
                         <span class="contact display-name"> <h2>{{thisEvent.Title}}</h2> </span>
                         <div class="col-12">
-                            <div class="row">
+                            <div class="row address-label">
                                 Address: 
-                                {{thisEvent.Addr_Street}}
-                                {{thisEvent.Addr_City}}, {{thisEvent.Addr_State}} {{thisEvent.ZipCode}}
-
+                                
                             </div>
                             <div class="row">
                                 <div class="col-2 address-label">
                                     Street
                                 </div>
                                 <div class="col">
-                                    {{thisEvent.Street}}
+                                    {{thisEvent.Addr_Street}}
                                 </div>
                             </div>
                             
@@ -42,7 +40,7 @@
                                     City
                                 </div>
                                 <div class="col">
-                                    {{thisEvent.City}}
+                                    {{thisEvent.Addr_City}}
                                 </div>
                             </div>
                             <div class="row">
@@ -50,7 +48,7 @@
                                     State
                                 </div>
                                 <div class="col-1">
-                                    {{thisEvent.State}}
+                                    {{thisEvent.Addr_State}}
                                 </div>
                             </div>
                             <div class="row">
@@ -58,7 +56,7 @@
                                     Zip
                                 </div>
                                 <div class="col-4">
-                                    {{thisEvent.Zip}} {{contactType == 'Org'}}
+                                    {{thisEvent.Addr_ZipCode}}
                                 </div>
                             </div>
                             <div class="row">
@@ -69,77 +67,42 @@
                                     {{thisEvent.GPS_Location}}
                                 </div>
                             </div>
+
                             <hr>
-                            <div class="row" ng-show="contactType != 'Org'">
-                                <div class="col contact-info-label">
+
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    Event Type
+                                </div>
+                                <div class="col">
+                                    {{thisEvent.Event_Type_Description }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    Event Duration
+                                </div>
+                                <div class="col">
+                                    {{thisEvent.Event_Duration }} Hrs
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    Status
+                                </div>
+                                <div class="col">
+                                    {{thisEvent.StatusDescription}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    Event Type
+                                </div>
+                                <div class="col">
                                     {{thisEvent.Event_Type}}
                                 </div>
                             </div>
-                            <div class="row" ng-show="contactType != 'Org'">
-                                <div class="col">
-                                    {{thisEvent.ContactType}}
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType != 'Org'">
-                                <div class="col contact-info-label">
-                                    Introduced By
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType != 'Org'">
-                                <div class="col">
-                                    {{thisEvent.IntroducedBy}}
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType != 'Org'">
-                                <div class="col contact-info-label">
-                                    Organization
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType != 'Org'">
-                                <div class="col">
-                                    {{thisEvent.Organization}}
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType != 'Org'">
-                                <div class="col contact-info-label">
-                                    Title
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType != 'Org'">
-                                <div class="col">
-                                    {{thisEvent.Title}}
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType != 'Org'">
-                                <div class="col contact-info-label">
-                                    Notes
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType != 'Org'">
-                                <div class="col">
-                                    {{thisEvent.orgNotes}}
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType == 'Org'">
-                                <div class="col">
-                                    Primary Contact
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType == 'Org'">
-                                <div class="col">
-                                    {{thisEvent.PrimaryContact}}
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType == 'Org'">
-                                <div class="col">
-                                    Phone Number
-                                </div>
-                            </div>
-                            <div class="row" ng-show="contactType == 'Org'">
-                                <div class="col">
-                                    909098876
-                                </div>
-                            </div>
+                            
                           
                         </div>
                     </div>
