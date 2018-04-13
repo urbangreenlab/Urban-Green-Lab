@@ -1,5 +1,5 @@
 
-App.controller('EventController', function ($scope, $http, $routeParams, $location, $sce, $filter, $uibModal, $rootScope,$compile, EventFactory) {
+App.controller('EventController', function ($scope, $http, $routeParams, $location, $sce, $filter, $uibModal, $rootScope,$compile, EventFactory, ContactFactory) {
   $scope.events = createEvent();
   var date = new Date();
   var d = date.getDate();
@@ -40,24 +40,32 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
       .then(eventInfo=>{
         console.log('event nifo ',eventInfo);
         $scope.thisEvent = eventInfo;
-        // return EventFactory.getEventType(eventInfo.Event_Type_Id);
+        return ContactFactory.getContact(eventInfo.Primary_Contact);
         // console.log('event type',eventType);
         console.log('scope this evnet',$scope.thisEvent);
       })
-      // .then(eventType=>{
-      //   eventType.LookUp.forEach(et=>{
-      //     if($scope.thisEvent.Event_Type_Id == et.TypeID){
-      //       $scope.thisEvent.Event_Type = et.TypeDescription;
-      //     }
-      //   })
-      // })
+      .then(primeContact=>{
+        console.log('primeContact',primeContact);
+        $scope.thisEvent.Primary_Contact_Name = `${primeContact.First_Name} ${primeContact.Last_Name}`;
+        $scope.thisEvent.Primary_Contact_Number = `cell: ${primeContact.Phone_Cell}, other: ${primeContact.Phone_Other}`;
+
+      })
   };
 
   /* alert on Move/Drop */
   $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
-      console.log('delta',delta, event); 
-      // EventFactory.editEvent()
-      $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
+      console.log('event', event); 
+      let newEvent = {
+        "Planned_End": `"${event.end._d}"`,
+        "Planned_Start": `"${event.start._d}"`,
+        "Event_Id": `${event.Event_Id}`,
+        "Title": `"${event.Title}"`,
+
+      }
+      EventFactory.editEvent(newEvent)
+      .then(response=>{
+        console.log('repseons',response);
+      })
   };
 
   /* alert on Resize */

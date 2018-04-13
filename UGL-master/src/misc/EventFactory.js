@@ -21,7 +21,7 @@ angular
             value: function (id) {
 
                 return $http({
-                    "url": `${API.URL}/GetEventById?eventID${id}`,
+                    "url": `${API.URL}/GetEventById?eventID=${id}`,
                     "method": "GET"
                 }).then(response => {
                     const data = response.data
@@ -46,16 +46,12 @@ angular
                     //     }
                     //   ],
         "editEvent": {
-            value: function (event) { //<- this event needs to be an object
+            value: function (newEvent) { //<- this event needs to be an object
                 return $http({
                     "url": `${API.URL}/CreateEvent`,
-                    "data": event,
-                    "method": "PUT"
-                }).then(response => {
-                    const data = response.data
-                    return data
-                    console.log("Event edit response: ", JSON.stringify(data))
-                })
+                    "data": newEvent,
+                    "method": "POST"
+                });
             }
         },
     })
