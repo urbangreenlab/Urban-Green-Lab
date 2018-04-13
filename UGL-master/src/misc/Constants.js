@@ -1,5 +1,5 @@
 angular.module("Urban")
 
 .constant("API", {
-    URL: "http://uglappdev.azurewebsites.net"
+    URL: "https://ugltest1.azurewebsites.net"
 })

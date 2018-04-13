@@ -21,7 +21,7 @@ angular
             value: function (id) {
 
                 return $http({
-                    "url": `${API.URL}/GetEventById?eventID${id}`,
+                    "url": `${API.URL}/GetEventById?eventID=${id}`,
                     "method": "GET"
                 }).then(response => {
                     const data = response.data
@@ -46,12 +46,18 @@ angular
                     //     }
                     //   ],
         "editEvent": {
-            value: function (event) { //<- this event needs to be an object
+            value: function (newEvent) { //<- this event needs to be an object
                 return $http({
                     "url": `${API.URL}/CreateEvent`,
+<<<<<<< HEAD
                     "data": event,
                     "method": "POST"
                 })
+=======
+                    "data": newEvent,
+                    "method": "POST"
+                });
+>>>>>>> bbe49aba206c2d252a24082bdc143cd4afa003d2
             }
         },
     })

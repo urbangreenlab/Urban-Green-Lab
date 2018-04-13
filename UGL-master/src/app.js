@@ -51,7 +51,7 @@ var App = angular.module('Urban',
             })
             .when('/allOrganizations',{
                 templateUrl: '../src/templates/allOrganizations.html',
-                controller: 'AllOrganizations'
+                controller: 'OrganizationsController'
             })
             .otherwise({
                 redirectTo: '/landing'
@@ -71,6 +71,12 @@ var App = angular.module('Urban',
             //     });
             // },
             templateUrl: '../src/templates/dispContact.html'
+        }
+    })
+    .directive('eventInfo', function () {
+        return {
+            
+            templateUrl: '../src/templates/eventInfo.html'
         }
     })
     .directive('project', function () {

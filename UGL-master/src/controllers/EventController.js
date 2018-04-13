@@ -1,5 +1,5 @@
 
-App.controller('EventController', function ($scope, $http, $routeParams, $location, $sce, $filter, $uibModal, $rootScope,$compile, EventFactory) {
+App.controller('EventController', function ($scope, $http, $routeParams, $location, $sce, $filter, $uibModal, $rootScope,$compile, EventFactory, ContactFactory) {
   $scope.events = createEvent();
   var date = new Date();
   var d = date.getDate();
@@ -31,31 +31,43 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
       callback(events);
     };
 
-    $scope.calEventsExt = {
-       color: '#f00',
-       textColor: 'yellow',
-       events: [ 
-          {type:'party',title: 'Lunch',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
-          {type:'party',title: 'Lunch 2',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
-          {type:'party',title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
-        ]
-    };
-  $scope.test = 'this is a test';
-
   /* alert on eventClick */
   $scope.alertOnEventClick = function (date, jsEvent, view) {
-      console.log('date',date);
+      // console.log('date',date);
       // This event will display the clicked events info 
       // on the left side bar
-      $scope.thisEvent = date;
-      $scope.alertMessage = (date.title + ' was clicked ');
+      EventFactory.getEvent(date.Event_Id)
+      .then(eventInfo=>{
+        console.log('event nifo ',eventInfo);
+        $scope.thisEvent = eventInfo;
+        return ContactFactory.getContact(eventInfo.Primary_Contact);
+        // console.log('event type',eventType);
+        console.log('scope this evnet',$scope.thisEvent);
+      })
+      .then(primeContact=>{
+        console.log('primeContact',primeContact);
+        $scope.thisEvent.Primary_Contact_Name = `${primeContact.First_Name} ${primeContact.Last_Name}`;
+        $scope.thisEvent.Primary_Contact_Number = `cell: ${primeContact.Phone_Cell}, other: ${primeContact.Phone_Other}`;
+
+      })
   };
-  /* alert on Drop */
+
+  /* alert on Move/Drop */
   $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
-      console.log('delta',delta, event); 
-      // EventFactory.editEvent()
-      $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
+      console.log('event', event); 
+      let newEvent = {
+        "Planned_End": `"${event.end._d}"`,
+        "Planned_Start": `"${event.start._d}"`,
+        "Event_Id": `${event.Event_Id}`,
+        "Title": `"${event.Title}"`,
+
+      }
+      EventFactory.editEvent(newEvent)
+      .then(response=>{
+        console.log('repseons',response);
+      })
   };
+
   /* alert on Resize */
   $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
       console.log('whaaat');
@@ -134,5 +146,4 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
   };
   /* event sources array*/
   $scope.eventSources = [$scope.events, $scope.eventsF];
-  $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
 })
