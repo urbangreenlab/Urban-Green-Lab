@@ -2,27 +2,25 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DataAccess.Audit;
+using System.Web.UI.WebControls;
 using UrbanLab.Responses;
 
 namespace UrbanLab.TableAdapters
 {
     public class ContactTableAdapter : BaseTableAdapter
     {
-        #region Constructor
-        public ContactTableAdapter(AuditClient auditClient) : base(auditClient)
+        private Unit auditClient;
+
+        public ContactTableAdapter(Unit auditClient)
         {
-
+            this.auditClient = auditClient;
         }
-
-        #endregion
-
         #region Public Methods
 
         #region Get by ID
         internal tblContact_Person GetContactByContactID(long contactID)
         {
-            misspiggyDBEntities DataContext = new misspiggyDBEntities();
+            UGLEntities DataContext = new UGLEntities();
             var a = (from items in DataContext.tblContact_Person
                      where items.Person_Contact_Id == contactID
                      select items);
@@ -39,7 +37,7 @@ namespace UrbanLab.TableAdapters
 
         internal tblContact_Org GetAllOrganizationByID(long OrgID)
         {
-            misspiggyDBEntities DataContext = new misspiggyDBEntities();
+            UGLEntities DataContext = new UGLEntities();
             var a = (from items in DataContext.tblContact_Org
                      where items.Org_Id == OrgID
                      select items);
@@ -55,7 +53,7 @@ namespace UrbanLab.TableAdapters
 
         internal tblEvent_Info GetAllEventByID(long eventID)
         {
-            misspiggyDBEntities DataContext = new misspiggyDBEntities();
+            UGLEntities DataContext = new UGLEntities();
             var a = (from items in DataContext.tblEvent_Info
                      where items.Event_Id == eventID
                      select items);
@@ -75,7 +73,7 @@ namespace UrbanLab.TableAdapters
 
         public BaseResponse CreateContactPerson(ContactPerson request)
         {
-            misspiggyDBEntities d = new misspiggyDBEntities();
+            UGLEntities d = new UGLEntities();
             if (request != null && request.Contact_Id > 0)
             {
                 var pp = GetContactByContactID(request.Contact_Id);
@@ -149,7 +147,7 @@ namespace UrbanLab.TableAdapters
 
         public BaseResponse CreateContactOrganization(ContactOrganization request)
         {
-            misspiggyDBEntities d = new misspiggyDBEntities();
+            UGLEntities d = new UGLEntities();
             if (request != null && request.Org_Id > 0)
             {
                 var pp = GetAllOrganizationByID(request.Org_Id);
@@ -207,7 +205,7 @@ namespace UrbanLab.TableAdapters
 
         internal BaseResponse CreateEventInfo(EventInfo request)
         {
-            misspiggyDBEntities d = new misspiggyDBEntities();
+            UGLEntities d = new UGLEntities();
             if (request != null && request.Event_Id > 0)
             {
                 var ee = GetAllEventByID(request.Event_Id);
@@ -301,7 +299,7 @@ namespace UrbanLab.TableAdapters
         #region Get ALL
         public List<tblContact_Person> GetAllContacts()
         {
-            misspiggyDBEntities DataContext = new misspiggyDBEntities();
+            UGLEntities DataContext = new UGLEntities();
             var a = (from items in DataContext.tblContact_Person
                      select items);
             if (a != null && a.Count() > 0)
@@ -315,7 +313,7 @@ namespace UrbanLab.TableAdapters
 
         internal List<tblEvent_Info> GetAllEvents()
         {
-            misspiggyDBEntities DataContext = new misspiggyDBEntities();
+            UGLEntities DataContext = new UGLEntities();
             var a = (from items in DataContext.tblEvent_Info
                      select items);
             if (a != null && a.Count() > 0)
@@ -329,7 +327,7 @@ namespace UrbanLab.TableAdapters
 
         internal List<tblContact_Org> GetAllOrganizations()
         {
-            misspiggyDBEntities DataContext = new misspiggyDBEntities();
+            UGLEntities DataContext = new UGLEntities();
             var a = (from items in DataContext.tblContact_Org
                      select items);
             if (a != null && a.Count() > 0)

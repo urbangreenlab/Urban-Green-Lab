@@ -84,7 +84,7 @@ namespace UrbanLab.Logic
                     c.Phone_Other = b.Phone_Other;
                     c.Job_Title = b.Job_Title;
                     c.Success = true;
-                    c.Message = "Contact: " + c.Last_Name + " with ID: " + c.Contact_Id + "returned successfully.";
+                    c.Message = "Contact: " + c.Last_Name + " with ID: " + c.Contact_Id + " returned successfully.";
                 }
             }
             catch (Exception e)

@@ -49,11 +49,8 @@ namespace UrbanLab
         public Nullable<System.DateTime> Create_Datetime { get; set; }
     
         public virtual LU_tblEventStatus LU_tblEventStatus { get; set; }
-        public virtual LU_tblEventStatus LU_tblEventStatus1 { get; set; }
         public virtual LU_tblEventType LU_tblEventType { get; set; }
-        public virtual LU_tblEventType LU_tblEventType1 { get; set; }
         public virtual tblContact_Person tblContact_Person { get; set; }
-        public virtual tblContact_Person tblContact_Person1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEvent_Roster> tblEvent_Roster { get; set; }
     }

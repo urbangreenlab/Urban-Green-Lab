@@ -22,7 +22,6 @@ namespace UrbanLab
             this.tblContact_PgmRelation_Types = new HashSet<tblContact_PgmRelation_Types>();
             this.tblEvent_Roster = new HashSet<tblEvent_Roster>();
             this.tblEvent_Info = new HashSet<tblEvent_Info>();
-            this.tblEvent_Info1 = new HashSet<tblEvent_Info>();
         }
     
         public long Person_Contact_Id { get; set; }
@@ -64,7 +63,5 @@ namespace UrbanLab
         public virtual ICollection<tblEvent_Roster> tblEvent_Roster { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEvent_Info> tblEvent_Info { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblEvent_Info> tblEvent_Info1 { get; set; }
     }
 }
