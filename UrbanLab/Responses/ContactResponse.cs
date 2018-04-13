@@ -98,10 +98,15 @@ namespace UrbanLab.Responses
         public string Photo_Code { get; set; }
         public int Involved_Org_Cnt { get; set; }        
     }
-    public class ContactTypeResponse
+
+    public class LookUpTypeListResponse: BaseResponse
     {
-        public string ContactType { get; set; }
-        public int ContactTypeID { get; set; }
+        public List<LookUpTypeResponse> LookUp { get; set; }
+    }
+    public class LookUpTypeResponse
+    {
+        public string TypeDescription { get; set; }
+        public int TypeID { get; set; }
     }
 
     public class BaseResponse

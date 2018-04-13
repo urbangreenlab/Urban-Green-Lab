@@ -57,8 +57,7 @@ namespace UrbanLab.Controllers
             ContactLogic cl = new ContactLogic();
             return cl.CreateEventInfo(request);
         }
-
-
+        
 
         [HttpGet]
         [Route("GetOrganization")]
@@ -83,5 +82,7 @@ namespace UrbanLab.Controllers
             ContactLogic cl = new ContactLogic();
             return cl.GetEventInfo();
         }
+
+
     }
 }

@@ -311,8 +311,7 @@ namespace UrbanLab.TableAdapters
             }
             else
                 return null;
-        }
-        
+        }        
 
         internal List<tblEvent_Info> GetAllEvents()
         {
