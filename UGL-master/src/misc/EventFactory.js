@@ -50,7 +50,9 @@ angular
                 return $http({
                     "url": `${API.URL}/CreateEvent`,
                     "data": newEvent,
-                    "method": "POST"
+                    "method": "POST",
+                    // "accept": "application/JSON",
+                    // "Content-Type": "application/x-www-form-urlencoded",
                 });
             }
         },

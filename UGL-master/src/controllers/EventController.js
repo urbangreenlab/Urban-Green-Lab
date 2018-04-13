@@ -56,12 +56,17 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
   $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
       console.log('event', event); 
       let newEvent = {
-        "Planned_End": `"${event.end._d}"`,
-        "Planned_Start": `"${event.start._d}"`,
-        "Event_Id": `${event.Event_Id}`,
-        "Title": `"${event.Title}"`,
-
+        "Planned_End": `${moment(event.end._d).format('YYYY-MM-DD')}`,
+        "Planned_Start": `${moment(event.start._d).format('YYYY-MM-DD')}`,
+        "Event_Id": event.Event_Id,
+        "Title": `${event.Title}`,
+        "Primary_Contact": event.Primary_Contact,
+        "Status": event.Status,
+        "Event_Type_Id": `${event.Event_Type_Id}`,
+        "Date": `${moment(event.start._d).format('YYYY-MM-DDTHH:mm:SS')}`,
+        "Event_Duration": event.Event_Duration,
       }
+      console.log('newEvent',newEvent);
       EventFactory.editEvent(newEvent)
       .then(response=>{
         console.log('repseons',response);
