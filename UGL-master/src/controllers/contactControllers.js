@@ -9,8 +9,8 @@ App.controller('NewContactController', function ($scope, $http, $route, $locatio
     }
     //}
 
-    $scope.contacts = createContacts();
-    $scope.orgs = createContacts();
+    //$scope.contacts = createContacts();
+    //$scope.orgs = createContacts();
     console.log($scope.contacts);
     $scope.createContact = function (contact) {
         var stop = 'stop';
@@ -51,13 +51,6 @@ App.controller('NewContactController', function ($scope, $http, $route, $locatio
         $scope.getContacts = function (allContacts) {
             if (!!allContacts) {
                 $.each(allContacts, function (a) { allContacts[a].fullName = allContacts[a].First_Name + " " + allContacts[a].Last_Name });
-                // currentContacts = [];
-                // lastContacts = $filter('filter')(allContacts,( { Last_Name: (!!$scope.search || undefined) && $scope.search }));
-                // firstContacts = $filter('filter')(allContacts, { First_Name: (!!$scope.search || undefined) && $scope.search });
-                // currentContacts.push(lastContacts);
-                // currentContacts.push(firstContacts);
-                // contacts = $filter('filter')(contacts, (!!$scope.search || undefined) && $scope.search);
-
                 contacts = $filter('filter')(allContacts, (!!$scope.selection.type || undefined) && $scope.selection.type);
                 contacts = $filter('filter')(contacts, { fullName: (!!$scope.search || undefined) && $scope.search });
                 contacts = $filter('filter')(contacts, (!!$scope.selection.org || undefined) && $scope.selection.org);
@@ -89,5 +82,10 @@ App.controller('NewContactController', function ($scope, $http, $route, $locatio
                 windowClass: 'app-modal-window'
             });
         }
+        $scope.createContact = function (contact) {
+            delete contact.fullName;
+            ContactFactory.editContact(contact);
+        }
+    
 
     })
