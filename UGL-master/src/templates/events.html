@@ -1,3 +1,45 @@
-<div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="eventCalendar"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4 contact-information">
+    </div>
+    <div class="col-8 contact-list">
+      <div class="row">
+        <div class="col">
+          <span class="column-label">
+            Name: 
+            {{}}
+          </span>
+        </div>
+        <div class="col">
+          <span class="column-label">
+            Email
+          </span>
+        </div>
+        <div class="col">
+          <span class="column-label">
+            Phone
+          </span>
+        </div>
+        <div class="col">
+          <span class="column-label">
+            Contact Type
+          </span>
+        </div>
+        <div class="col">
+          <span class="column-label">
+            Program Relation
+          </span>
+        </div>
+        <div class="col">
+          <span class="column-label">
+            Organization
+          </span>
+        </div>
+      </div>
 
-<div>{{test}}</div>
+      <div>
+        <div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="eventCalendar"></div>
+      </div>
+    </div>
+  </div>
+</div>

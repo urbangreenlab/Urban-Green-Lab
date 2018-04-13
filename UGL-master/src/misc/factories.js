@@ -11,6 +11,7 @@ App.factory('dataFactory', function ($http) {
     });
 
 })
+
     .factory('portOpen', function () {
         return function (project) {
             $scope.projectESR = getGraphData([project]);
@@ -43,3 +44,6 @@ App.factory('dataFactory', function ($http) {
         });
     })
 
+    .factory('contactFunctions', function($http){
+        return;
+    })

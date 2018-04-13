@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <div class="row">
+                <div class="col">
+                    <div class="save-edit">
+                        <i class="fa fa-plus" ng-click="openModal()"> Create</i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="save-edit">
+                        <i class="fa fa-edit" ng-click="openModal()"> Edit</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 contact-information">
+            <info data="thisContact"></info>
+        </div>
+        <div class="col-8 contact-list">
+            <div class="row">
+                <div class="col">
+                    <span class="column-label">
+                        Organization
+                    </span>
+                </div>
+                <div class="col">
+                    <span class="column-label">
+                        Primary Contact
+                    </span>
+                </div>
+                <div class="col">
+                    <span class="column-label">
+                        Phone Number
+                    </span>
+                </div>
+                <!-- <div class="col">
+                    <span class="column-label">
+                        Contact Type
+                    </span>
+                </div>
+                <div class="col">
+                    <span class="column-label">
+                        Program Relation
+                    </span>
+                </div>
+                <div class="col">
+                    <span class="column-label">
+                        Organization
+                    </span>
+                </div> -->
+            </div>
+            <div ng-click="contactInfo(contact)" class="row contact-list" ng-repeat="contact in orgs">
+                <div class="col">
+                    {{contact.Name}}
+                </div>
+                <div class="col">
+                    {{contact.PrimaryContact}}
+                </div>
+                <div class="col">
+                    714-867-5309
+                </div>
+                <!-- <div class="col">
+                    {{contact.ContactType}}
+                </div>
+                <div class="col">
+                    {{contact.ProgramRelation}}
+                </div>
+                <div class="col">
+                    {{contact.Organization}}
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

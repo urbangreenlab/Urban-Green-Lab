@@ -1,0 +1,192 @@
+<!-- <div ng-repeat="project in projects">
+    <project data='project'></project> -->
+<!-- <p-details project='project'></p-details>
+    <p-summary project ='project'></p-summary> -->
+<!-- </div>
+
+<div ng-repeat="user in contacts">
+    {{user.FirstName}} {{user.LastName}}<br/>{{user.Id}}
+</div> -->
+<div id="contactForm" ng-show="(thisContact)">
+    <form ng-init="contact" class="container-fluid form  contact-form">
+        <div class="row">
+            <span class="contact display-name"> {{thisContact.Prefix}} {{thisContact.FirstName}} {{thisContact.LastName}}</span>
+            <div class="col-12">
+                <div class="row">
+                    Address
+                </div>
+                <div class="row">
+                    <div class="col-2 address-label">
+                        Street
+                    </div>
+                    <div class="col">
+                        {{thisContact.Street}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 address-label">
+                    </div>
+                    <div class="col">
+                        {{thisContact.Street}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 address-label">
+                        City
+                    </div>
+                    <div class="col">
+                        {{thisContact.City}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 address-label">
+                        State
+                    </div>
+                    <div class="col-1">
+                        {{thisContact.State}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 address-label">
+                        Zip
+                    </div>
+                    <div class="col-4">
+                        {{thisContact.Zip}}
+                        {{contactType == 'Org'}}
+                    </div>
+                </div>
+                <hr>
+                <div class="row" ng-show="contactType != 'Org'">
+                    <div class="col contact-info-label">
+                        Contact Type
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType != 'Org'">
+                    <div class="col">
+                        {{thisContact.ContactType}}
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType != 'Org'">
+                    <div class="col contact-info-label">
+                        Introduced By
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType != 'Org'">
+                    <div class="col">
+                        {{thisContact.IntroducedBy}}
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType != 'Org'">
+                    <div class="col contact-info-label">
+                        Organization
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType != 'Org'">
+                    <div class="col">
+                        {{thisContact.Organization}}
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType != 'Org'">
+                    <div class="col contact-info-label">
+                        Title
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType != 'Org'">
+                    <div class="col">
+                        {{thisContact.Title}}
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType != 'Org'">
+                    <div class="col contact-info-label">
+                        Notes
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType != 'Org'">
+                    <div class="col">
+                        {{thisContact.orgNotes}}
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType == 'Org'">
+                    <div class="col">
+                        Primary Contact
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType == 'Org'">
+                    <div class="col">
+                        {{thisContact.PrimaryContact}}
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType == 'Org'">
+                    <div class="col">
+                        Phone Number
+                    </div>
+                </div>
+                <div class="row" ng-show="contactType == 'Org'">
+                    <div class="col">
+                        909098876
+                    </div>
+                </div>
+                <!--
+
+
+
+
+                <form-group class="row">
+                    <span class="contact display-address">Address</span>
+                    <hr>
+                    <label class="form-label label" for="Street">Street</label>
+                    <div class="form-control col-6" id="Street">{{thisContact.Street}}</div>
+                </form-group>
+                <form-group class="row justify-content-left">
+                    <label class="form-label label" for="City">City</label>
+                    <div class="form-control col" id="City">{{thisContact.City}}</div>
+                    <label class="form-label label" for="State">State</label>
+                    <div class="form-control label" id="State">{{thisContact.state}}</div>
+            
+                    <label class="form-label label" for="Zip">Zip</label>
+                    <div ng-model="thisContact.zip" type="text" class="form-control col" id="Zip" placeholder="Zip"></div>
+                </form-group>
+                <form-group class="row">
+                    <label class="form-label label" for="Email">Email</label>
+                    <div ng-model="thisContact.email" type="text" class="form-control col-6" id="Email" placeholder="Email"></div>
+                </form-group>
+                <form-group class="row">
+                    <label class="form-label label" for="Phone">Phone #</label>
+                    <div ng-model="thisContact.phone" type="text" class="form-control col-6" id="Phone" placeholder="Phone"></div>
+                    <label class="form-label label" for="phoneType">Type</label>
+                    <div class="dropdown" id="phoneType" ng-model="thisContact.phoneType"></div>
+                </form-group>
+                <form-group class="row">
+                    <label class="form-label label-large" for="ctype">Contact Type</label>
+                    <div class="dropdown" id="ctype" ng-model="thisContact.contactType"></div>
+                    <label class="form-label co-2" for="progRelation">Program Relation</label>
+                    <div class="dropdown" id="progRelation" ng-model="thisContact.programRelation"></div>
+                </form-group>
+                <form-group class="row">
+                    <label class="form-label label-large" for="contactRelated">Related Contact</label>
+                    <div class="dropdown" id="contactRelated" ng-model="thisContact.contactRelated"></div>
+                </form-group>
+                <form-group class="row">
+                    <label class="form-label label-large" for="referrer">Introduced By</label>
+                    <div class="dropdown" id="referrer" ng-model="thisContact.referrer"></div>
+                </form-group>
+            </div>
+        </div>
+    </form>
+    <form class="container-fluid form  contact-form lvl-sub">
+        <div class="row">
+            <div class="col-6">
+                <form-group class="row">
+                    <div class='section-label lvl-1'>Organization/Affiliation</div>
+                </form-group>
+                <form-group class="row">
+                    <label class="form-label label-large" for="organization">Organization</label>
+                    <div id="organization" class="dropdown" ng-model="thisContact.organization"></div>
+                    <label class="form-label label-large" for="notes">Notes</label>
+                    <textarea id="notes" ng-model="thisContact.orgNotes" value='Notes'></textarea>
+                </form-group>
+                <div type="button" value="Create Contact" ng-click="createContact(contact)"></div>-->
+            </div>
+        </div>
+    </form>
+</div>
