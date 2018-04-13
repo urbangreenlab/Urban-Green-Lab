@@ -2,10 +2,7 @@ angular
   .module('Urban')
   .factory("EventFactory", function ($http, API) {
     return Object.create(null, {
-        "cache": {
-            value: null,
-            writable: true
-        },
+        //GET ALL EVENTS
         "getEvents": {
             value: function () {
 
@@ -19,11 +16,12 @@ angular
                 })
             }
         },
+        //GET SINGLE EVENT
         "getEvent": {
             value: function (id) {
 
                 return $http({
-                    "url": `${API.URL}/GetEventByID?EventID=${id}`,
+                    "url": `${API.URL}/GetEventById?eventID${id}`,
                     "method": "GET"
                 }).then(response => {
                     const data = response.data
@@ -32,25 +30,26 @@ angular
                 })
             }
         },
-        "getEventType": {
-            value: function (id) {
+        //CREATE NEW OR EDIT EXISTING EVENT
+        //pass in the object you want to replace the existing event object with
+        //if you wish to create a new event object then do not include the id
 
-                return $http({
-                    "url": `${API.URL}/GetEventType?LookUp.TypeID=${id}`,
-                    "method": "GET"
-                }).then(response => {
-                    const data = response.data
-                    return data
-                    console.log("Event single response: ", JSON.stringify(data))
-                })
-            }
-        },
+        //Updating the EventContactRole needs an array of ojects like this...
+        // "EventContactRole": [
+            //     {
+                //       "ContactID": 1,
+                //       "EventRoleID": 2
+                //     },
+                //     {
+                    //       "ContactID": 1,
+                    //       "EventRoleID": 2
+                    //     }
+                    //   ],
         "editEvent": {
-            value: function (id, a, b, c, d) {
-
+            value: function (event) { //<- this event needs to be an object
                 return $http({
-                    "url": `${API.URL}/CreateEvent/${id}`,
-                    "data": a, b, c, d,
+                    "url": `${API.URL}/CreateEvent`,
+                    "data": event,
                     "method": "PUT"
                 }).then(response => {
                     const data = response.data
