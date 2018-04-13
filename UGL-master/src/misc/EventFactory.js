@@ -10,7 +10,7 @@ angular
             value: function () {
 
                 return $http({
-                    "url": `${API.URL}/api/events`,
+                    "url": `${API.URL}/GetEventInfo`,
                     "method": "GET"
                 }).then(response => {
                     const data = response.data
@@ -23,7 +23,7 @@ angular
             value: function (id) {
 
                 return $http({
-                    "url": `${API.URL}/api/events/${id}`,
+                    "url": `${API.URL}/GetEventById/${id}`,
                     "method": "GET"
                 }).then(response => {
                     const data = response.data
@@ -36,7 +36,7 @@ angular
             value: function (id, a, b, c, d) {
 
                 return $http({
-                    "url": `${API.URL}/api/events/${id}`,
+                    "url": `${API.URL}/CreateEvent/${id}`,
                     "data": a, b, c, d,
                     "method": "PUT"
                 }).then(response => {
