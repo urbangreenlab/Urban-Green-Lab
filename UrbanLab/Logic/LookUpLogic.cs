@@ -15,11 +15,10 @@ namespace UrbanLab.Logic
             foreach( var b in a)
             {
                 ContactTypeResponse c = new ContactTypeResponse();
-                c.ContactType = b.Type_Desc;
-                c.ContactTypeID = b.Type_Id;
+                c.ContactType = b.Contact_Type_Desc;
+                c.ContactTypeID = b.Contact_Type_Id;                
 
-                cl.Add(c);
-                
+                cl.Add(c);                
             }
             return cl;
         }

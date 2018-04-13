@@ -361,6 +361,9 @@
     <Compile Include="vProductModelCatalogDescription.cs">
       <DependentUpon>UBLModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="vwEvent_Attendance.cs">
+      <DependentUpon>UBLModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

@@ -35,8 +35,6 @@ namespace UrbanLab
         public string Addr_City { get; set; }
         public string Addr_State { get; set; }
         public string Addr_ZipCode { get; set; }
-        public Nullable<System.DateTime> Create_Datetime { get; set; }
-        public Nullable<System.DateTime> Modified_Datetime { get; set; }
         public string Active_Ind { get; set; }
         public Nullable<long> Adult_Cnt { get; set; }
         public Nullable<long> Child_Cnt { get; set; }
@@ -47,6 +45,8 @@ namespace UrbanLab
         public string Photo_Release_Ind { get; set; }
         public string Photo_Code { get; set; }
         public Nullable<int> Involved_Org_Cnt { get; set; }
+        public Nullable<System.DateTime> Modified_Datetime { get; set; }
+        public Nullable<System.DateTime> Create_Datetime { get; set; }
     
         public virtual LU_tblEventStatus LU_tblEventStatus { get; set; }
         public virtual LU_tblEventStatus LU_tblEventStatus1 { get; set; }

@@ -21,8 +21,8 @@ namespace UrbanLab
             this.tblEvent_Info1 = new HashSet<tblEvent_Info>();
         }
     
-        public int Status_Id { get; set; }
-        public string Status_Desc { get; set; }
+        public int Event_Status_Id { get; set; }
+        public string Event_Status_Desc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEvent_Info> tblEvent_Info { get; set; }
