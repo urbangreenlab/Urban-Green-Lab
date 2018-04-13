@@ -1,17 +1,53 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-4">
+        <div class="col-4 contact-information">
+            <div class="row buttons">
+                <div class="col">
+                    <div class="save-edit">
+                        <i class="fa fa-plus" ng-click="openModal('New')"> Create</i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="save-edit">
+                        <i class="fa fa-edit" ng-click="openModal('Edit', thisContact)"> Edit</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8" ng-init="selection={}">
             <div class="row">
-                <div class="col">
-                    <div class="save-edit">
-                        <i class="fa fa-plus" ng-click="openModal()"> Create</i>
-                    </div>
+                <div class="col filters">
+                    <input type="search" ng-model="search" placeholder="Search...">
                 </div>
-                <div class="col">
-                    <div class="save-edit">
-                        <i class="fa fa-edit" ng-click="openModal()"> Edit</i>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col filters">
+                    <span>Program</span>
+                    <select class="dropdown filter" type="button" ng-model="selection.program" ng-options="p.Value as p.Name for p in programFilter">
+                        <option value=''>All</option>
+                    </select>
                 </div>
+                <div class="col filters">
+                    <span>Type</span>
+                    <select class="dropdown filter" type="button" ng-model="selection.type" ng-options="p.Value as p.Name for p in programFilter">
+                        <option value=''>All</option>
+                    </select>
+                </div>
+                <div class="col filters">
+                    <span>Org</span>
+                    <select class="dropdown filter" type="button" ng-model="selection.org" ng-options="p.Value as p.Name for p in programFilter">
+                        <option value=''>All</option>
+                    </select>
+                </div>
+                <div class="col filters">
+                    <span>Volunteer</span>
+                    <select class="dropdown filter" type="button" ng-model="selection.volunteer" ng-options="p.Value as p.Name for p in programFilter">
+                        <option value=''>All</option>
+                    </select>
+                </div>
+                <!-- <div class="col filters">
+                    <input type="search" ng-model="search" placeholder="Search...">
+                </div> -->
             </div>
         </div>
     </div>
@@ -21,58 +57,57 @@
         </div>
         <div class="col-8 contact-list">
             <div class="row">
-                <div class="col">
+                <div class="col-3">
                     <span class="column-label">
-                        Organization
+                        Name
                     </span>
                 </div>
-                <div class="col">
+                <div class="col-3">
                     <span class="column-label">
-                        Primary Contact
+                        Email_Id
                     </span>
                 </div>
-                <div class="col">
+                <div class="col-2">
                     <span class="column-label">
-                        Phone Number
+                        Phone
                     </span>
                 </div>
-                <!-- <div class="col">
+                <div class="col-1">
                     <span class="column-label">
                         Contact Type
                     </span>
                 </div>
-                <div class="col">
+                <div class="col-1">
                     <span class="column-label">
                         Program Relation
                     </span>
                 </div>
-                <div class="col">
+                <div class="col-1">
                     <span class="column-label">
                         Organization
                     </span>
-                </div> -->
+                </div>
             </div>
-            <div ng-click="contactInfo(contact)" class="row contact-list" ng-repeat="contact in orgs">
-                <div class="col">
-                    {{contact.Name}}
+            <div ng-click="contactInfo(contact)" class="row" ng-repeat="contact in getContacts(contacts)">
+                <div class="col-3">
+                    {{contact.First_Name}} {{contact.Last_Name}}
                 </div>
-                <div class="col">
-                    {{contact.PrimaryContact}}
+                <div class="col-3">
+                    {{contact.Email_Id}}
                 </div>
-                <div class="col">
+                <div class="col-2">
                     {{contact.Phone_Cell}} </br>
                     {{contact.Phone_Other}}
-
                 </div>
-                <!-- <div class="col">
-                    {{contact.ContactType}}
+                <div class="col-1">
+                    {{contact.ContactTypeIdList}}
                 </div>
-                <div class="col">
+                <div class="col-1">
                     {{contact.Related_Program}}
                 </div>
-                <div class="col">
-                    {{contact.Organization}}
-                </div> -->
+                <div class="col-1">
+                    {{contact.Org_Id}}
+                </div>
             </div>
         </div>
     </div>

@@ -3,7 +3,6 @@
 <!-- <p-details project='project'></p-details>
     <p-summary project ='project'></p-summary> -->
 <!-- </div>
-
 <div ng-repeat="user in contacts">
     {{user.First_Name}} {{user.Last_Name}}<br/>{{user.Id}}
 </div> -->
@@ -13,11 +12,8 @@
             <span class="contact display-name"> {{thisContact.Name_Prefix}} {{thisContact.First_Name}} {{thisContact.Last_Name}}</span>
             <div class="col-12">
                 <div class="row">
-                    Address
-                </div>
-                <div class="row">
-                    <div class="col-2 address-label">
-                        Street
+                    <div class="col-3 detail-label align-right">
+                        Address
                     </div>
                     <div class="col">
                         {{thisContact.Addr_Street}}
@@ -31,7 +27,7 @@
                     </div>
                 </div> -->
                 <div class="row">
-                    <div class="col-2 address-label">
+                    <div class="col-3 detail-label align-right">
                         City
                     </div>
                     <div class="col">
@@ -39,7 +35,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-2 address-label">
+                    <div class="col-3 detail-label align-right">
                         State
                     </div>
                     <div class="col-1">
@@ -47,90 +43,86 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-2 address-label">
+                    <div class="col-3 detail-label align-right">
                         Zip
                     </div>
                     <div class="col-4">
-                        {{thisContact.Addr_ZipCode}} 
+                        {{thisContact.Addr_ZipCode}}
                     </div>
                 </div>
                 <hr>
                 <div class="row" ng-show="contactType != 'Org'">
-                    <div class="col contact-info-label">
+                    <div class="col detail-label align-left">
                         Contact Type
                     </div>
                 </div>
-                <div class="row" ng-show="contactType != 'Org'">
+                <div class="row detail-space" ng-show="contactType != 'Org'">
                     <div class="col">
                         {{thisContact.ContactType}}
                     </div>
                 </div>
                 <div class="row" ng-show="contactType != 'Org'">
-                    <div class="col contact-info-label">
+                    <div class="col detail-label align-left">
                         Introduced By
                     </div>
                 </div>
-                <div class="row" ng-show="contactType != 'Org'">
+                <div class="row detail-space" ng-show="contactType != 'Org'">
                     <div class="col">
                         {{thisContact.IntroducedBy}}
                     </div>
                 </div>
                 <div class="row" ng-show="contactType != 'Org'">
-                    <div class="col contact-info-label">
+                    <div class="col detail-label align-left">
                         Organization
                     </div>
                 </div>
-                <div class="row" ng-show="contactType != 'Org'">
+                <div class="row detail-space" ng-show="contactType != 'Org'">
                     <div class="col">
                         {{thisContact.Organization}}
                     </div>
                 </div>
                 <div class="row" ng-show="contactType != 'Org'">
-                    <div class="col contact-info-label">
+                    <div class="col detail-label align-left">
                         Title
                     </div>
                 </div>
-                <div class="row" ng-show="contactType != 'Org'">
+                <div class="row detail-space" ng-show="contactType != 'Org'">
                     <div class="col">
                         {{thisContact.Title}}
                     </div>
                 </div>
                 <div class="row" ng-show="contactType != 'Org'">
-                    <div class="col contact-info-label">
+                    <div class="col detail-label align-left">
                         Notes
                     </div>
                 </div>
-                <div class="row" ng-show="contactType != 'Org'">
+                <div class="row detail-space" ng-show="contactType != 'Org'">
                     <div class="col">
                         {{thisContact.orgNotes}}
                     </div>
                 </div>
                 <div class="row" ng-show="contactType == 'Org'">
-                    <div class="col">
+                    <div class="col detail-label align-left">
                         Primary Contact
                     </div>
                 </div>
-                <div class="row" ng-show="contactType == 'Org'">
+                <div class="row detail-space" ng-show="contactType == 'Org'">
                     <div class="col">
                         {{thisContact.PrimaryContact}}
                     </div>
                 </div>
                 <div class="row" ng-show="contactType == 'Org'">
-                    <div class="col">
+                    <div class="col detail-label align-left">
                         Phone Number
                     </div>
                 </div>
-                <div class="row" ng-show="contactType == 'Org'">
+                <div class="row detail-space" ng-show="contactType == 'Org'">
                     <div class="col">
                         {{contact.Phone_Cell}} </br>
                         {{contact.Phone_Other}}
                     </div>
                 </div>
                 <!--
-
-
-
-
                 <form-group class="row">
                     <span class="contact display-address">Address</span>
                     <hr>
@@ -142,7 +134,7 @@
                     <div class="form-control col" id="City">{{thisContact.Addr_ZipCode}}</div>
                     <label class="form-label label" for="State">State</label>
                     <div class="form-control label" id="State">{{thisContact.Addr_State}}</div>
-            
+
                     <label class="form-label label" for="Zip">Zip</label>
                     <div ng-model="thisContact.Addr_ZipCode" type="text" class="form-control col" id="Addr_ZipCode" placeholder="Zip"></div>
                 </form-group>
