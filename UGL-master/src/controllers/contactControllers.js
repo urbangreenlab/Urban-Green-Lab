@@ -1,22 +1,24 @@
 App.controller('NewContactController', function ($scope, $http, $route, $location, $sce, $filter, $uibModal, $rootScope, $routeParams) {
-    $scope.showDeets = false;
-    //$scope.projectDetails = function () {
-    if (!!$routeParams.id) {
-        $scope.$parent.route = {};
-        $scope.$parent.route.id = $routeParams.id;
-        $scope.$parent.thisProject = $filter('filter')($scope.projects, { Dept: (!!$routeParams.id || undefined) && $routeParams.id });
-        $scope.$parent.showDeets = true;
-    }
-    //}
+        $scope.showDeets = false;
+        //$scope.projectDetails = function () {
+        if (!!$routeParams.id) {
+            $scope.$parent.route = {};
+            $scope.$parent.route.id = $routeParams.id;
+            $scope.$parent.thisProject = $filter('filter')($scope.projects, {
+                Dept: (!!$routeParams.id || undefined) && $routeParams.id
+            });
+            $scope.$parent.showDeets = true;
+        }
+        //}
 
-    $scope.contacts = createContacts();
-    $scope.orgs = createContacts();
-    console.log($scope.contacts);
-    $scope.createContact = function (contact) {
-        var stop = 'stop';
-    }
+        $scope.contacts = createContacts();
+        $scope.orgs = createContacts();
+        console.log($scope.contacts);
+        $scope.createContact = function (contact) {
+            var stop = 'stop';
+        }
 
-})
+    })
     .controller('OrganizationsController', function ($scope, $http, $route, $location, $sce, $filter, $uibModal, $rootScope,
         $routeParams) {
         $scope.orgs = createContacts();
@@ -33,15 +35,26 @@ App.controller('NewContactController', function ($scope, $http, $route, $locatio
         }
     })
     .controller('ContactsController', function ($scope, $http, $route, $location, $sce, $filter, $uibModal, $rootScope,
-        $routeParams, ContactFactory) {
+        $routeParams, ContactFactory, ContactTypeFactory, ProgramRelationFactory) {
         //Need to replace the arrays below with filtered results from the REST object
-        $scope.programFilter = [{ Name: 'PR-One', Value: 'Hey 1' }, { Name: 'PR-two', Value: 'Hey 2' }, { Name: 'PR-three', Value: 'Hey 3' }];
         $scope.orgFilter = ['ORG-One', 'ORG-Two', 'ORG-Three'];
-        $scope.typeFilter = ['Type-One', 'Type-Two', 'Type-Three'];
         $scope.volunteerFilter = ['Yes', 'No'];
+        $scope.programFilter = [];
+        ProgramRelationFactory.GetProgramRelations()
+            .then(data => {
+                $scope.programFilter = data.LookUp;
+                console.log($scope.programFilter);
+            });
 
 
-        $scope.contacts = [];//createContacts();
+        $scope.typeFilter = [];
+        ContactTypeFactory.getContactTypes()
+            .then(data => {
+                $scope.typeFilter = data.LookUp;
+                console.log($scope.typeFilter);
+            });
+
+        $scope.contacts = []; //createContacts();
         ContactFactory.getContacts()
             .then(data => {
                 $scope.contacts = data.ContactPeson;
@@ -50,7 +63,9 @@ App.controller('NewContactController', function ($scope, $http, $route, $locatio
             });
         $scope.getContacts = function (allContacts) {
             if (!!allContacts) {
-                $.each(allContacts, function (a) { allContacts[a].fullName = allContacts[a].First_Name + " " + allContacts[a].Last_Name });
+                $.each(allContacts, function (a) {
+                    allContacts[a].fullName = allContacts[a].First_Name + " " + allContacts[a].Last_Name
+                });
                 // currentContacts = [];
                 // lastContacts = $filter('filter')(allContacts,( { Last_Name: (!!$scope.search || undefined) && $scope.search }));
                 // firstContacts = $filter('filter')(allContacts, { First_Name: (!!$scope.search || undefined) && $scope.search });
@@ -59,7 +74,9 @@ App.controller('NewContactController', function ($scope, $http, $route, $locatio
                 // contacts = $filter('filter')(contacts, (!!$scope.search || undefined) && $scope.search);
 
                 contacts = $filter('filter')(allContacts, (!!$scope.selection.type || undefined) && $scope.selection.type);
-                contacts = $filter('filter')(contacts, { fullName: (!!$scope.search || undefined) && $scope.search });
+                contacts = $filter('filter')(contacts, {
+                    fullName: (!!$scope.search || undefined) && $scope.search
+                });
                 contacts = $filter('filter')(contacts, (!!$scope.selection.org || undefined) && $scope.selection.org);
                 contacts = $filter('filter')(contacts, (!!$scope.selection.volunteer || undefined) && $scope.selection.volunteer);
                 contacts = $filter('filter')(contacts, (!!$scope.selection.program || undefined) && $scope.selection.program);

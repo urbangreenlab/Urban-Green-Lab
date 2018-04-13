@@ -5,88 +5,82 @@
 <!-- </div>
 
 <div ng-repeat="user in contacts">
-    {{user.First_Name}} {{user.Last_Name}}<br/>{{user.Id}}
+    {{user.FirstName}} {{user.LastName}}<br/>{{user.Id}}
 </div> -->
 <div id="contactForm">
-    <form ng-init="contact" class="container form  contact-form">
-        <div>
-            <h1>Contact</h1>
-        </div>
-        <div class='section-label lvl-0'>Personal Information</div>
-        <div class="row">
-            <div class="col-12">
-                <div>Name</div>
-                <div class="form-row">
+        <form ng-init="contact" class="container-fluid form  contact-form">
+            <div class='section-label lvl-0'>Contact Information</div>
+            <div class="row">
+                <div class="col-12">
                     <form-group class="row justify-content-left">
-                        <!-- <label class="form-label label" for="prefix">Prefix</label> -->
-                        <select class="dropdown col-md-2" ng-model="thisContact.prefix" ng-options="pre as pre for pre in prefixes" placeholder="Prefix"></select>
-                        <!-- <label class="form-label label" for="FirstName"></label> -->
-                        <input ng-model="thisContact.firstName" type="text" class="form-control col-md-4" id="FirstName" placeholder="First Name">
-                        <!-- <label class="form-label label" for="LastName"></label> -->
-                        <input ng-model="thisContact.lastName" type="text" class="form-control col-md-4" id="LastName" placeholder="Last Name">
+                        <label class="form-label label" for="prefix">Prefix</label>
+                        <select class="dropdown" ng-model="thisContact.prefix" ng-options="pre as pre for pre in prefixes"></select>
+                        <label class="form-label label" for="FirstName">First Name</label>
+                        <input ng-model="thisContact.firstName" type="text" class="form-control col" id="FirstName" placeholder="First Name">
+                        <label class="form-label label" for="LastName">Last Name</label>
+                        <input ng-model="thisContact.lastName" type="text" class="form-control col" id="LastName" placeholder="Last Name">
                     </form-group>
-                </div>
-                <!-- </div>
+                    <!-- </div>
         </div>
         <div class="row">
             <div class="col-4"> -->
-                <form-group class="row">
-                    <label class="form-label label" for="Street">Street</label>
-                    <input ng-model="thisContact.street" type="text" class="form-control col-6" id="Street" placeholder="Street Address">
-                </form-group>
-                <form-group class="row justify-content-left">
-                    <label class="form-label label" for="City">City</label>
-                    <input ng-model="thisContact.city" type="text" class="form-control col" id="City" placeholder="City">
-                    <!-- </form-group>
+                    <form-group class="row">
+                        <label class="form-label label" for="Street">Street</label>
+                        <input ng-model="thisContact.street" type="text" class="form-control col-6" id="Street" placeholder="Street Address">
+                    </form-group>
+                    <form-group class="row justify-content-left">
+                        <label class="form-label label" for="City">City</label>
+                        <input ng-model="thisContact.city" type="text" class="form-control col" id="City" placeholder="City">
+                        <!-- </form-group>
                 <form-group class="row"> -->
-                    <label class="form-label label" for="State">State</label>
-                    <input ng-model="thisContact.state" type="text" class="form-control label" id="State" placeholder="State">
-                    <!-- </form-group>
+                        <label class="form-label label" for="State">State</label>
+                        <input ng-model="thisContact.state" type="text" class="form-control label" id="State" placeholder="State">
+                        <!-- </form-group>
                 <form-group class="row"> -->
-                    <label class="form-label label" for="Zip">Zip</label>
-                    <input ng-model="thisContact.zip" type="text" class="form-control col" id="Zip" placeholder="Zip">
-                </form-group>
-                <form-group class="row">
-                    <label class="form-label label" for="Email">Email</label>
-                    <input ng-model="thisContact.email" type="text" class="form-control col-6" id="Email" placeholder="Email">
-                </form-group>
-                <form-group class="row">
-                    <label class="form-label label" for="Phone">Phone #</label>
-                    <input ng-model="thisContact.phone" type="text" class="form-control col-6" id="Phone" placeholder="Phone">
-                    <label class="form-label label" for="phoneType">Type</label>
-                    <select class="dropdown" id="phoneType" ng-model="thisContact.phoneType" ng-options="phoneType as phoneType for phoneType in phoneTypes"></select>
-                </form-group>
-                <form-group class="row">
-                    <label class="form-label label-large" for="ctype">Contact Type</label>
-                    <select class="dropdown" id="ctype" ng-model="thisContact.contactType" ng-options="ctype as ctype for ctype in ctypes"></select>
-                    <label class="form-label co-2" for="progRelation">Program Relation</label>
-                    <select class="dropdown" id="progRelation" ng-model="thisContact.programRelation" ng-options="progRelation as progRelation for progRelation in progRelations"></select>
-                </form-group>
-                <form-group class="row">
-                    <label class="form-label label-large" for="contactRelated">Related Contact</label>
-                    <select class="dropdown" id="contactRelated" ng-model="thisContact.contactRelated" ng-options="contactRelated as (contactRelated.FirstName + ' ' + contactRelated.LastName) for contactRelated in contacts"></select>
-                </form-group>
-                <form-group class="row">
-                    <label class="form-label label-large" for="referrer">Introduced By</label>
-                    <select class="dropdown" id="referrer" ng-model="thisContact.referrer" ng-options="referrer as referrer.FirstName for referrer in contacts"></select>
-                </form-group>
+                        <label class="form-label label" for="Zip">Zip</label>
+                        <input ng-model="thisContact.zip" type="text" class="form-control col" id="Zip" placeholder="Zip">
+                    </form-group>
+                    <form-group class="row">
+                        <label class="form-label label" for="Email">Email</label>
+                        <input ng-model="thisContact.email" type="text" class="form-control col-6" id="Email" placeholder="Email">
+                    </form-group>
+                    <form-group class="row">
+                        <label class="form-label label" for="Phone">Phone #</label>
+                        <input ng-model="thisContact.phone" type="text" class="form-control col-6" id="Phone" placeholder="Phone">
+                        <label class="form-label label" for="phoneType">Type</label>
+                        <select class="dropdown" id="phoneType" ng-model="thisContact.phoneType" ng-options="phoneType as phoneType for phoneType in phoneTypes"></select>
+                    </form-group>
+                    <form-group class="row">
+                        <label class="form-label label-large" for="ctype">Contact Type</label>
+                        <select class="dropdown" id="ctype" ng-model="thisContact.contactType" ng-options="ctype as ctype for ctype in ctypes"></select>
+                        <label class="form-label co-2" for="progRelation">Program Relation</label>
+                        <select class="dropdown" id="progRelation" ng-model="thisContact.programRelation" ng-options="progRelation as progRelation for progRelation in progRelations"></select>
+                    </form-group>
+                    <form-group class="row">
+                        <label class="form-label label-large" for="contactRelated">Related Contact</label>
+                        <select class="dropdown" id="contactRelated" ng-model="thisContact.contactRelated" ng-options="contactRelated as (contactRelated.FirstName + ' ' + contactRelated.LastName) for contactRelated in contacts"></select>
+                    </form-group>
+                    <form-group class="row">
+                        <label class="form-label label-large" for="referrer">Introduced By</label>
+                        <select class="dropdown" id="referrer" ng-model="thisContact.referrer" ng-options="referrer as referrer.FirstName for referrer in contacts"></select>
+                    </form-group>
+                </div>
             </div>
-        </div>
-    </form>
-    <form class="container-fluid form  contact-form lvl-sub">
-        <div class="row">
-            <div class="col-12">
-                <form-group class="row">
-                    <div class='section-label lvl-1'>Organization/Affiliation</div>
-                </form-group>
-                <form-group class="row">
-                    <label class="form-label label-large" for="organization">Organization</label>
-                    <select id="organization" class="dropdown" ng-model="thisContact.organization" ng-options="org as org.FirstName for org in orgs"></select>
-                    <label class="form-label label-large" for="notes">Notes</label>
-                    <textarea id="notes" ng-model="thisContact.orgNotes" value='Notes'></textarea>
-                </form-group>
-                <input type="button" value="Create Contact" ng-click="createContact(contact)">
+        </form>
+        <form class="container-fluid form  contact-form lvl-sub">
+            <div class="row">
+                <div class="col-12">
+                    <form-group class="row">
+                        <div class='section-label lvl-1'>Organization/Affiliation</div>
+                    </form-group>
+                    <form-group class="row">
+                        <label class="form-label label-large" for="organization">Organization</label>
+                        <select id="organization" class="dropdown" ng-model="thisContact.organization" ng-options="org as org.FirstName for org in orgs"></select>
+                        <label class="form-label label-large" for="notes">Notes</label>
+                        <textarea id="notes" ng-model="thisContact.orgNotes" value='Notes'></textarea>
+                    </form-group>
+                    <input type="button" value="Create Contact" ng-click="createContact(contact)">
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
