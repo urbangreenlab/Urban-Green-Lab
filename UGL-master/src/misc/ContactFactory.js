@@ -39,7 +39,7 @@ angular
                 return $http({
                     "url": `${API.URL}/CreateContact`,
                     "data": contact,
-                    "method": "PUT"
+                    "method": "POST"
                 }).then(response => {
                     const data = response.data
                     return data

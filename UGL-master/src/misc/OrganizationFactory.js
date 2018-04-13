@@ -34,7 +34,7 @@ angular
                 return $http({
                     "url": `${API.URL}/CreateOrganization?orgId=${id}`,
                     "data": a, b, c, d,
-                    "method": "PUT"
+                    "method": "POST"
                 }).then(response => {
                     const data = response.data
                     return data

@@ -1,8 +1,9 @@
 html{
-	font-size:1vw !important;
+    font-size:1vw !important;
 }
 body {
-	margin: 3rem;
+    margin: 0 3rem 3rem;
+    border-radius: 1rem;
 }
 .modal-dialog {
     max-width: 60%;
@@ -13,61 +14,68 @@ form .label {
     flex: 0 0 12%;
 
     text-align: right;
-	margin-right: 1em;
-	max-width: 12%;
+    margin-right: 1em;
+    max-width: 12%;
 }
 form .label-large {
-	-ms-flex: 0 0 20%;
+    -ms-flex: 0 0 20%;
     flex: 0 0 20%;
 
     text-align: right;
-	margin-right: 1em;
-	max-width: 20%;
+    margin-right: 1em;
+    max-width: 20%;
 }
 .section-label {
-	font-weight: 700;
+    font-weight: 700;
 }
 .lvl-0 {
-	font-size: 2rem;
+    font-size: 2rem;
 }
 .lvl-1 {
-	font-size: 1.5rem;
-	margin-left: 3rem;
+    font-size: 1.5rem;
+    margin-left: 3rem;
 }
-/* .lvl-sub { 
-	margin-left: 4rem; 
+/* .lvl-sub {
+    margin-left: 4rem;
  } */
 select.dropdown{
-	height: 2rem;
+    height: 2rem;
 }
 .fade.in {
-	opacity: 1;
+    opacity: 1;
 }
 .modal-backdrop.in {
-	filter: alpha(opacity=50);
-	opacity: .6;
+    filter: alpha(opacity=50);
+    opacity: .6;
 }
 .modal-dialog{
-	top:10em;
+    top:10em;
 }
 .fc-button-group, .fc button {
     display: unset !important;
 }
 .logo {
-	height:6rem;
+    height:8rem;
+    margin: 2rem;
 }
 .main-navigation{
-	text-align: center;
+    text-align: center;
+}
+.navbar{
+    border-radius: 1rem 1rem 0 0;
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
 }
 .address-label {
-	text-align: end;
-	font-weight: 600;
-	color: #808080;
+    text-align: end;
+    font-weight: 600;
+    color: #808080;
 }
 .contact-info-label {
-	text-align: start;
-	font-weight: 600;
-	color: #808080;
+    text-align: start;
+    font-weight: 600;
+    color: #808080;
 }
 .col-0 {
     -ms-flex: 0 0 3.5%;
@@ -82,44 +90,144 @@ select.dropdown{
     padding-left: 2rem !important;
     width: 100%;
 }
+
+.app-content-container{
+    border-radius: 0 0 1rem 1rem;
+    border-bottom: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    padding-bottom: 1rem;
+}
+
+.create-btn, .edit-btn{
+    width: 100%;
+}
+
 .main-app {
-	background-color: #cccccc;
+    background-color: #cccccc;
 }
 .green {
-	background-color: #679018
+    background-color: #679018
 }
-.light-green { 
-	background-color: #edefe8;
+.light-green {
+    background-color: #f9fbf3;
 }
 
 .blue {
-	background-color: #4d86a9
+    background-color: #4d86a9
 }
 
 .red {
-	background-color: #d60b45
+    background-color: #d60b45
 }
 
 .white {
-	background-color: #ffffff
+    background-color: #ffffff
 }
 
 .gray-1 {
-	background-color: #f5f5f5
+    background-color: #f5f5f5
 }
 
 .gray-2 {
-	background-color: #eaeaea
+    background-color: #eaeaea
 }
 
 .gray-3 {
-	background-color: #e3e3e3
+    background-color: #e3e3e3
 }
 
 .gray-4 {
-	background-color: #aeaeaf
+    background-color: #aeaeaf
 }
 
 .gray-5 {
-	background-color: #373a3c
+    background-color: #373a3c
+}
+
+
+
+/********** Main Navigation Styles **********/
+.navbar{
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+}
+li.nav-item{
+    padding: 0 1rem;
+    border-right: 1px solid #e3e3e3;
+}
+li.nav-item:last-child{
+    border-right:none;
+}
+a.nav-link{
+    font-size: 1.4rem;
+}
+a.nav-link.active {
+    background-color: #373a3c;
+}
+
+
+
+/********** Details Column Styles **********/
+.row.buttons{
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: 9px;
+}
+
+.create-btn, .edit-btn{
+    width: 100%;
+}
+.create-btn{
+    border-color: #5b7088;
+}
+.edit-btn{
+    border-color: #327d43;
+}
+
+.contact.display-name{
+    font-size: 2rem;
+    padding: 1.2rem 0 .75rem;
+}
+
+.contact-details{
+    border-top: 2px solid #aeaeaf;
+    padding: 1.2rem 0;
+}
+
+.detail-label{
+    color: #aeaeaf;
+    font-weight: bold;
+}
+.text-align-left{
+    text-align:left;
+}
+.text-align-right{
+    text-align:right;
+}
+.detail-space {
+    padding-bottom: 10px;
+}
+
+
+
+
+
+/************* List Styles **************/
+
+.list-head {
+    background-color: #373a3c;
+    color: white;
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+}
+
+.contact-list .row {
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: .75rem;
+    padding-top:.75rem;
+}
+
+.contact-list .row:not(:first-child):hover {
+    background-color: #e3e3e3;
 }
