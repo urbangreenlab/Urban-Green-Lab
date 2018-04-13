@@ -23,8 +23,4 @@ App.controller('MainController', function ($scope, $http, $routeParams, $locatio
 
     //getProjectByID($scope.projects, $routeParams.id);
     $scope.ready = true;
-<<<<<<< HEAD
 })
-=======
-})
->>>>>>> e524e171946e08069ba7b9a21f41345b7b32e25c
