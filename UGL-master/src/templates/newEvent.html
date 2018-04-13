@@ -40,6 +40,8 @@
                     <label class="form-label co-2" for="status">Status</label>
                     <select class="dropdown" id="status" ng-model="event.Status" ng-options="status as status for status in statuss"></select>
                 </form-group>
+
+                <input type="button" value="Create Event" ng-click="createEvent(event)">
             </div>
         </div>
     </form>
