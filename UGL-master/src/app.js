@@ -5,15 +5,19 @@ var App = angular.module('Urban',
         $locationProvider.hashPrefix('');
         $routeProvider
             .when('/', {
-                redirectTo: '/landing',
+                redirectTo: '/allOrganizations',
             })
             .when('/landing', {
-                redirectTo: '/newContact'
+                redirectTo: '/allContacts'
             })
             // .when('/landing', {
             //     templateUrl: '../src/templates/landing.html',
             //     controller: 'LandingController'
             // })
+            .when('/allOrganizations', {
+                templateUrl: '../src/templates/allOrganizations.html',
+                controller: 'OrganizationsController'
+            })
             .when('/editor', {
                 templateUrl: '../src/templates/editor.html',
                 controller: 'EditorController'
@@ -43,7 +47,7 @@ var App = angular.module('Urban',
             
             .when('/allContacts',{
                 templateUrl: '../src/templates/allContacts.html',
-                controller: 'AllContacts'
+                controller: 'ContactsController'
             })
             .when('/allOrganizations',{
                 templateUrl: '../src/templates/allOrganizations.html',
@@ -53,20 +57,20 @@ var App = angular.module('Urban',
                 redirectTo: '/landing'
             });
     })
-    .directive('pdetails', function () {
+    .directive('info', function () {
         return {
-            restrict: 'EA',
-            scope: {
-                detailData: '=project',
-                //maybe use ng-switch based on mode edit/read/detailed/summary....???
-            },
-            transclude: true,
-            link: function (scope, element, attrs, ctrl, transclude) {
-                transclude(scope, function (clone, scope) {
-                    element.append(clone);
-                });
-            },
-            templateUrl: '../src/templates/project-details.html'
+            // restrict: 'EA',
+            // scope: {
+            //     thisContact: '=data',
+            //     //maybe use ng-switch based on mode edit/read/detailed/summary....???
+            // },
+            // transclude: true,
+            // link: function (scope, element, attrs, ctrl, transclude) {
+            //     transclude(scope, function (clone, scope) {
+            //         element.append(clone);
+            //     });
+            // },
+            templateUrl: '../src/templates/dispContact.html'
         }
     })
     .directive('project', function () {

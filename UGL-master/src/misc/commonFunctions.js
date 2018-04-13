@@ -20,12 +20,12 @@ var contactTemplate = {
     Organization: "", //Key Pointing to Organization
 };
 var organizationTemplate = {
-    Name: "",
-    Street: "",
-    City: "",
-    State: "",
-    Zip: "",
-    PrimaryContact: "", //Key Pointing to list of contacts
+    Name: "uil",
+    Street: "kjykuyi",
+    City: "ki",
+    State: "ki",
+    Zip: "4564354",
+    PrimaryContact: "34552", //Key Pointing to list of contacts
     Email: "",
     Phone: {
         Mobile: "",
@@ -69,6 +69,7 @@ function createContacts() {
     for (var i = 0; i < 10; i++) {
         contact = {
             Id: i + 89434,
+            Title: "Big Boss",
             Prefix: "abc" + i,
             FirstName: "abc" + i,
             LastName: "abc" + i,
@@ -88,6 +89,7 @@ function createContacts() {
             RelatedContact: [],  //Keys pointing back to contact list
             IntroducedBy: "abc" + i,
             Organization: "abc" + i, //Key Pointing to Organization
+            orgNotes: "hey here are some notes"
         };
         contacts.push(contact);
         contact = angular.copy(contactTemplate);
