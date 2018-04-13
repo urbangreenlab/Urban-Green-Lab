@@ -23,7 +23,7 @@ angular
             value: function (id) {
 
                 return $http({
-                    "url": `${API.URL}/GetEventById/${id}`,
+                    "url": `${API.URL}/GetEventByID?EventID=${id}`,
                     "method": "GET"
                 }).then(response => {
                     const data = response.data

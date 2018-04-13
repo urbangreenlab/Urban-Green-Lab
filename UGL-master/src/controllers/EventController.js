@@ -18,7 +18,7 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
           event.end = event.Planned_End;
           $scope.events.push(event);
       });
-      console.log('see logggg',events.EventInfo);
+      // console.log('see logggg',events.EventInfo);
       
   });
   
@@ -44,10 +44,14 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
 
   /* alert on eventClick */
   $scope.alertOnEventClick = function (date, jsEvent, view) {
-      console.log('date',date);
+      // console.log('date',date);
       // This event will display the clicked events info 
       // on the left side bar
-      $scope.thisEvent = date;
+      EventFactory.getEvent(date.Event_Id)
+      .then(eventInfo=>{
+        $scope.thisEvent = eventInfo;
+        console.log('scope this evnet',$scope.thisEvent);
+      })
       $scope.alertMessage = (date.title + ' was clicked ');
   };
   /* alert on Drop */
