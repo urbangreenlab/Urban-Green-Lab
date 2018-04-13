@@ -26,6 +26,10 @@ var App = angular.module('Urban',
                 templateUrl: '../src/templates/events.html',
                 controller: 'EventController'
             })
+            .when('/newEvent', {
+                templateUrl: '../src/templates/newEvent.html',
+                controller: 'EventController'
+            })
             .when('/newContact', {
                 //create new contact, ditto on Organization
                 templateUrl: '../src/templates/newContact.html',
@@ -44,7 +48,7 @@ var App = angular.module('Urban',
                 templateUrl: '../src/templates/organizationInfo.html',
                 controller: 'OrganizationInfoController'
             })
-            
+
             .when('/allContacts',{
                 templateUrl: '../src/templates/allContacts.html',
                 controller: 'ContactsController'
@@ -75,7 +79,7 @@ var App = angular.module('Urban',
     })
     .directive('eventInfo', function () {
         return {
-            
+
             templateUrl: '../src/templates/eventInfo.html'
         }
     })

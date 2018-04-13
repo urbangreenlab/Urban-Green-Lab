@@ -19,9 +19,9 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
           $scope.events.push(event);
       });
       console.log('see logggg',events.EventInfo);
-      
+
   });
-  
+
     /* event source that calls a function on every view switch */
     $scope.eventsF = function (start, end, timezone, callback) {
       var s = new Date(start).getTime() / 1000;
@@ -34,7 +34,7 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
   /* alert on eventClick */
   $scope.alertOnEventClick = function (date, jsEvent, view) {
       // console.log('date',date);
-      // This event will display the clicked events info 
+      // This event will display the clicked events info
       // on the left side bar
       EventFactory.getEvent(date.Event_Id)
       .then(eventInfo=>{
@@ -54,7 +54,7 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
 
   /* alert on Move/Drop */
   $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
-      console.log('event', event); 
+      console.log('event', event);
       let newEvent = {
         "Planned_End": `"${event.end._d}"`,
         "Planned_Start": `"${event.start._d}"`,
@@ -146,4 +146,13 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
   };
   /* event sources array*/
   $scope.eventSources = [$scope.events, $scope.eventsF];
+
+
+  $scope.openModal = function () {
+    $uibModal.open({
+        scope: $scope,
+        templateUrl: '../src/templates/newEvent.html',
+        windowClass: 'app-modal-window'
+    });
+}
 })

@@ -49,15 +49,9 @@ angular
             value: function (newEvent) { //<- this event needs to be an object
                 return $http({
                     "url": `${API.URL}/CreateEvent`,
-<<<<<<< HEAD
-                    "data": event,
-                    "method": "POST"
-                })
-=======
                     "data": newEvent,
                     "method": "POST"
                 });
->>>>>>> bbe49aba206c2d252a24082bdc143cd4afa003d2
             }
         },
     })
