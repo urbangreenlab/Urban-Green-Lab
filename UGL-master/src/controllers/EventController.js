@@ -51,6 +51,10 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
       .then(eventInfo=>{
         $scope.thisEvent = eventInfo;
         console.log('scope this evnet',$scope.thisEvent);
+        return EventFactory.getEventType($scope.thisEvent.Event_Type_Id);
+      })
+      .then(eventType=>{
+        console.log('event type',eventType);
       })
       $scope.alertMessage = (date.title + ' was clicked ');
   };

@@ -32,6 +32,19 @@ angular
                 })
             }
         },
+        "getEventType": {
+            value: function (id) {
+
+                return $http({
+                    "url": `${API.URL}/GetEventType?TypeID=${id}`,
+                    "method": "GET"
+                }).then(response => {
+                    const data = response.data
+                    return data
+                    console.log("Event single response: ", JSON.stringify(data))
+                })
+            }
+        },
         "editEvent": {
             value: function (id, a, b, c, d) {
 
