@@ -18,7 +18,7 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
           event.end = event.Planned_End;
           $scope.events.push(event);
       });
-      // console.log('see logggg',events.EventInfo);
+      console.log('see logggg',events.EventInfo);
       
   });
   
@@ -31,17 +31,6 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
       callback(events);
     };
 
-    $scope.calEventsExt = {
-       color: '#f00',
-       textColor: 'yellow',
-       events: [ 
-          {type:'party',title: 'Lunch',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
-          {type:'party',title: 'Lunch 2',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
-          {type:'party',title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
-        ]
-    };
-  $scope.test = 'this is a test';
-
   /* alert on eventClick */
   $scope.alertOnEventClick = function (date, jsEvent, view) {
       // console.log('date',date);
@@ -49,21 +38,28 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
       // on the left side bar
       EventFactory.getEvent(date.Event_Id)
       .then(eventInfo=>{
+        console.log('event nifo ',eventInfo);
         $scope.thisEvent = eventInfo;
-        console.log('scope this evnet',$scope.thisEvent);
-        return EventFactory.getEventType($scope.thisEvent.Event_Type_Id);
+        return EventFactory.getEventType(eventInfo.Event_Type_Id);
       })
       .then(eventType=>{
+        eventType.LookUp.forEach(et=>{
+          if($scope.thisEvent.Event_Type_Id == et.TypeID){
+            $scope.thisEvent.Event_Type = et.TypeDescription;
+          }
+        })
         console.log('event type',eventType);
+        console.log('scope this evnet',$scope.thisEvent);
       })
-      $scope.alertMessage = (date.title + ' was clicked ');
   };
-  /* alert on Drop */
+
+  /* alert on Move/Drop */
   $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
       console.log('delta',delta, event); 
       // EventFactory.editEvent()
       $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
   };
+
   /* alert on Resize */
   $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
       console.log('whaaat');
@@ -142,5 +138,4 @@ App.controller('EventController', function ($scope, $http, $routeParams, $locati
   };
   /* event sources array*/
   $scope.eventSources = [$scope.events, $scope.eventsF];
-  $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
 })

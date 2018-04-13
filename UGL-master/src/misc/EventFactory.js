@@ -36,7 +36,7 @@ angular
             value: function (id) {
 
                 return $http({
-                    "url": `${API.URL}/GetEventType?TypeID=${id}`,
+                    "url": `${API.URL}/GetEventType?LookUp.TypeID=${id}`,
                     "method": "GET"
                 }).then(response => {
                     const data = response.data
