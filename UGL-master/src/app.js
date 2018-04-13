@@ -31,28 +31,28 @@ var App = angular.module('Urban',
                 templateUrl: '../src/templates/newContact.html',
                 controller: "NewContactController"
             })
-            // .when('/contactInfo/:id',{
-            //     //view contact with edit option
-            //     templateUrl: '../src/templates/contactInfo.html',
-            //     controller: 'ContactInfoController'
-            // })
-            // .when('/newOrganization', {
-            //     templateUrl: '../src/templates/newOrganization.html',
-            //     controller: 'NewOrganizationController'
-            // })
-            // .when('/organizationInfo/:id',{
-            //     templateUrl: '../src/templates/organizationInfo.html',
-            //     controller: 'OrganizationInfoController'
-            // })
+            .when('/contactInfo/:id',{
+                //view contact with edit option
+                templateUrl: '../src/templates/contactInfo.html',
+                controller: 'ContactInfoController'
+            })
+            .when('/newOrganization', {
+                templateUrl: '../src/templates/newOrganization.html',
+                controller: 'NewOrganizationController'
+            })
+            .when('/organizationInfo/:id',{
+                templateUrl: '../src/templates/organizationInfo.html',
+                controller: 'OrganizationInfoController'
+            })
             
             .when('/allContacts',{
                 templateUrl: '../src/templates/allContacts.html',
                 controller: 'ContactsController'
-            })/*
+            })
             .when('/allOrganizations',{
                 templateUrl: '../src/templates/allOrganizations.html',
                 controller: 'AllOrganizations'
-            })*/
+            })
             .otherwise({
                 redirectTo: '/landing'
             });

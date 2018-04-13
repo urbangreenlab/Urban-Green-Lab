@@ -5,12 +5,12 @@
 <!-- </div>
 
 <div ng-repeat="user in contacts">
-    {{user.FirstName}} {{user.LastName}}<br/>{{user.Id}}
+    {{user.First_Name}} {{user.Last_Name}}<br/>{{user.Id}}
 </div> -->
 <div id="contactForm" ng-show="(thisContact)">
     <form ng-init="contact" class="container-fluid form  contact-form">
         <div class="row">
-            <span class="contact display-name"> {{thisContact.Prefix}} {{thisContact.FirstName}} {{thisContact.LastName}}</span>
+            <span class="contact display-name"> {{thisContact.Name_Prefix}} {{thisContact.First_Name}} {{thisContact.Last_Name}}</span>
             <div class="col-12">
                 <div class="row">
                     Address
@@ -20,22 +20,22 @@
                         Street
                     </div>
                     <div class="col">
-                        {{thisContact.Street}}
+                        {{thisContact.Addr_Street}}
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-2 address-label">
                     </div>
                     <div class="col">
-                        {{thisContact.Street}}
+                        {{thisContact.Addr_State}}
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-2 address-label">
                         City
                     </div>
                     <div class="col">
-                        {{thisContact.City}}
+                        {{thisContact.Addr_City}}
                     </div>
                 </div>
                 <div class="row">
@@ -43,7 +43,7 @@
                         State
                     </div>
                     <div class="col-1">
-                        {{thisContact.State}}
+                        {{thisContact.Addr_State}}
                     </div>
                 </div>
                 <div class="row">
@@ -51,8 +51,7 @@
                         Zip
                     </div>
                     <div class="col-4">
-                        {{thisContact.Zip}}
-                        {{contactType == 'Org'}}
+                        {{thisContact.Addr_ZipCode}} 
                     </div>
                 </div>
                 <hr>
@@ -123,7 +122,8 @@
                 </div>
                 <div class="row" ng-show="contactType == 'Org'">
                     <div class="col">
-                        909098876
+                        {{contact.Phone_Cell}} </br>
+                        {{contact.Phone_Other}}
                     </div>
                 </div>
                 <!--
@@ -135,20 +135,20 @@
                     <span class="contact display-address">Address</span>
                     <hr>
                     <label class="form-label label" for="Street">Street</label>
-                    <div class="form-control col-6" id="Street">{{thisContact.Street}}</div>
+                    <div class="form-control col-6" id="Street">{{thisContact.Addr_State}}</div>
                 </form-group>
                 <form-group class="row justify-content-left">
                     <label class="form-label label" for="City">City</label>
-                    <div class="form-control col" id="City">{{thisContact.City}}</div>
+                    <div class="form-control col" id="City">{{thisContact.Addr_ZipCode}}</div>
                     <label class="form-label label" for="State">State</label>
-                    <div class="form-control label" id="State">{{thisContact.state}}</div>
+                    <div class="form-control label" id="State">{{thisContact.Addr_State}}</div>
             
                     <label class="form-label label" for="Zip">Zip</label>
-                    <div ng-model="thisContact.zip" type="text" class="form-control col" id="Zip" placeholder="Zip"></div>
+                    <div ng-model="thisContact.Addr_ZipCode" type="text" class="form-control col" id="Addr_ZipCode" placeholder="Zip"></div>
                 </form-group>
                 <form-group class="row">
-                    <label class="form-label label" for="Email">Email</label>
-                    <div ng-model="thisContact.email" type="text" class="form-control col-6" id="Email" placeholder="Email"></div>
+                    <label class="form-label label" for="Email_Id">Email_Id</label>
+                    <div ng-model="thisContact.Email_Id" type="text" class="form-control col-6" id="Email_Id" placeholder="Email_Id"></div>
                 </form-group>
                 <form-group class="row">
                     <label class="form-label label" for="Phone">Phone #</label>
@@ -160,7 +160,7 @@
                     <label class="form-label label-large" for="ctype">Contact Type</label>
                     <div class="dropdown" id="ctype" ng-model="thisContact.contactType"></div>
                     <label class="form-label co-2" for="progRelation">Program Relation</label>
-                    <div class="dropdown" id="progRelation" ng-model="thisContact.programRelation"></div>
+                    <div class="dropdown" id="progRelation" ng-model="thisContact.Related_Program"></div>
                 </form-group>
                 <form-group class="row">
                     <label class="form-label label-large" for="contactRelated">Related Contact</label>
