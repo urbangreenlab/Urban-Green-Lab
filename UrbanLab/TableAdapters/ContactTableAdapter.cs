@@ -172,37 +172,71 @@ namespace UrbanLab.TableAdapters
         internal BaseResponse CreateEventInfo(EventInfo request)
         {
             misspiggyDBEntities d = new misspiggyDBEntities();
-            tblEvent_Info e = new tblEvent_Info();
+            if (request != null && request.Event_Id > 0)
+            {
+                var ee = GetAllEventByID(request.Event_Id);
+                if (ee != null)
+                {                   
+                    ee.Event_Type_Id = request.Event_Type_Id > 0 ? request.Event_Type_Id: ee.Event_Type_Id;
+                    ee.Title = request.Title;
+                    ee.Status = request.Status;
+                    ee.Event_Date = request.Date;
+                    ee.Planned_Start = request.Planned_Start;
+                    ee.Planned_End = request.Planned_End;
+                    ee.Event_Duration = request.Event_Duration;
+                    ee.Location_Name = request.Location_Name;
+                    ee.GPS_Location = request.GPS_Location;
+                    ee.Primary_Contact = request.Primary_Contact;
+                    ee.Addr_Street = request.Addr_Street;
+                    ee.Addr_City = request.Addr_City;
+                    ee.Addr_State = request.Addr_State;
+                    ee.Addr_ZipCode = request.Addr_ZipCode;
+                    ee.Create_Datetime = request.Create_Datetime;
+                    ee.Modified_Datetime = request.Modified_Datetime;
+                    ee.Active_Ind = request.Active_Ind;
+                    ee.Adult_Cnt = request.Adult_Cnt;
+                    ee.Child_Cnt = request.Child_Cnt;
+                    ee.Mileage = request.Mileage;
+                    ee.Average_Score = request.Average_Score;
+                    ee.Revenue = request.Revenue;
+                    ee.Notes = request.Notes;
+                    ee.Photo_Release_Ind = request.Photo_Release_Ind;
+                    ee.Photo_Code = request.Photo_Code;
+                    ee.Involved_Org_Cnt = request.Involved_Org_Cnt;
+                }
+            }
+            else
+            {
+                tblEvent_Info e = new tblEvent_Info();
+                e.Event_Type_Id = request.Event_Type_Id;
+                e.Title = request.Title;
+                e.Status = request.Status;
+                e.Event_Date = request.Date;
+                e.Planned_Start = request.Planned_Start;
+                e.Planned_End = request.Planned_End;
+                e.Event_Duration = request.Event_Duration;
+                e.Location_Name = request.Location_Name;
+                e.GPS_Location = request.GPS_Location;
+                e.Primary_Contact = request.Primary_Contact;
+                e.Addr_Street = request.Addr_Street;
+                e.Addr_City = request.Addr_City;
+                e.Addr_State = request.Addr_State;
+                e.Addr_ZipCode = request.Addr_ZipCode;
+                e.Create_Datetime = request.Create_Datetime;
+                e.Modified_Datetime = request.Modified_Datetime;
+                e.Active_Ind = request.Active_Ind;
+                e.Adult_Cnt = request.Adult_Cnt;
+                e.Child_Cnt = request.Child_Cnt;
+                e.Mileage = request.Mileage;
+                e.Average_Score = request.Average_Score;
+                e.Revenue = request.Revenue;
+                e.Notes = request.Notes;
+                e.Photo_Release_Ind = request.Photo_Release_Ind;
+                e.Photo_Code = request.Photo_Code;
+                e.Involved_Org_Cnt = request.Involved_Org_Cnt;
 
-            e.Event_Id = request.Event_Id;
-            e.Event_Type_Id = request.Event_Type_Id;
-            e.Title = request.Title;
-            e.Status = request.Status;
-            e.Event_Date = request.Date;
-            e.Planned_Start = request.Planned_Start;
-            e.Planned_End = request.Planned_End;
-            e.Event_Duration = request.Event_Duration;
-            e.Location_Name = request.Location_Name;
-            e.GPS_Location = request.GPS_Location;
-            e.Primary_Contact = request.Primary_Contact;
-            e.Addr_Street = request.Addr_Street;
-            e.Addr_City = request.Addr_City;
-            e.Addr_State = request.Addr_State;
-            e.Addr_ZipCode = request.Addr_ZipCode;
-            e.Create_Datetime = request.Create_Datetime;
-            e.Modified_Datetime = request.Modified_Datetime;
-            e.Active_Ind = request.Active_Ind;
-            e.Adult_Cnt = request.Adult_Cnt;
-            e.Child_Cnt = request.Child_Cnt;
-            e.Mileage = request.Mileage;
-            e.Average_Score = request.Average_Score;
-            e.Revenue = request.Revenue;
-            e.Notes = request.Notes;
-            e.Photo_Release_Ind = request.Photo_Release_Ind;
-            e.Photo_Code = request.Photo_Code;
-            e.Involved_Org_Cnt = request.Involved_Org_Cnt; 
-
-            d.tblEvent_Info.Add(e);
+                d.tblEvent_Info.Add(e);
+            }
 
             BaseResponse r = new BaseResponse();
             try
@@ -213,11 +247,27 @@ namespace UrbanLab.TableAdapters
             }
             catch (Exception f)
             {
-                r.Success = true;
+                r.Success = false;
                 r.Message = "Event creation unsuccessful. Error: " + f.Message;
             }
-            
+
             return r;
+        }
+
+        internal tblEvent_Info GetAllEventByID(long eventID)
+        {
+            misspiggyDBEntities DataContext = new misspiggyDBEntities();
+            var a = (from items in DataContext.tblEvent_Info
+                     where items.Event_Id == eventID
+                     select items);
+            if (a != null && a.Count() > 0)
+            {
+                return (from items in DataContext.tblEvent_Info
+                        where items.Event_Id == eventID
+                        select items).FirstOrDefault();
+            }
+            else
+                return null;
         }
 
         #endregion
