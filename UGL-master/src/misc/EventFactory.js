@@ -50,11 +50,7 @@ angular
                 return $http({
                     "url": `${API.URL}/CreateEvent`,
                     "data": event,
-                    "method": "PUT"
-                }).then(response => {
-                    const data = response.data
-                    return data
-                    console.log("Event edit response: ", JSON.stringify(data))
+                    "method": "POST"
                 })
             }
         },

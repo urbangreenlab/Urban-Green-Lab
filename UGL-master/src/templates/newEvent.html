@@ -1,0 +1,47 @@
+<div id="eventForm">
+    <form ng-init="event" class="container-fluid form  event-form">
+        <div class='section-label lvl-0'>Event Information</div>
+        <div class="row">
+            <div class="col-6">
+
+                <form-group class="row">
+                    <label class="form-label label" for="Title">Title</label>
+                    <input ng-model="event.Title" type="text" class="form-control col-6" id="Title" placeholder="Title">
+                </form-group>
+                <form-group class="row">
+                    <label class="form-label label" for="Date">Date</label>
+                    <input ng-model="event.Date" type="date" class="form-control col-6" id="Date">
+                </form-group>
+
+                <form-group class="row justify-content-left">
+
+                    <label class="form-label label" for="Address">City</label>
+                    <input ng-model="event.Addr_Street" type="text" class="form-control col" id="Address" placeholder="Address">
+
+                    <label class="form-label label" for="City">City</label>
+                    <input ng-model="event.Addr_City" type="text" class="form-control col" id="City" placeholder="City">
+
+                    <label class="form-label label" for="State">State</label>
+                    <input ng-model="event.Addr_State" type="text" class="form-control label" id="State" placeholder="State">
+
+                    <label class="form-label label" for="Zip">Zip</label>
+                    <input ng-model="event.Addr_ZipCode" type="text" class="form-control col" id="Zip" placeholder="Zip">
+                </form-group>
+
+                <form-group class="row">
+                    <label class="form-label label" for="Email">Email</label>
+                    <input ng-model="event.email" type="text" class="form-control col-6" id="Email" placeholder="Email">
+                </form-group>
+
+
+                <form-group class="row">
+                    <label class="form-label label-large" for="etype">Event Type</label>
+                    <select class="dropdown" id="etype" ng-model="event.Event_Type_Id" ng-options="etype as etype for etype in etypes"></select>
+                    <label class="form-label co-2" for="status">Status</label>
+                    <select class="dropdown" id="status" ng-model="event.Status" ng-options="status as status for status in statuss"></select>
+                </form-group>
+            </div>
+        </div>
+    </form>
+
+</div>
