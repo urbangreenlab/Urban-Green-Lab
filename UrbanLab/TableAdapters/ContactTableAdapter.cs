@@ -316,7 +316,14 @@ namespace UrbanLab.TableAdapters
                 if (request.EventContactRole != null && request.EventContactRole.Count() > 0)
                 {
                     EventContactRoleList list = new EventContactRoleList();
-                    list.EventID = d.tblEvent_Info.Where(x => x.Title == request.Title).LastOrDefault().Event_Id;
+                    if (request.Event_Id > 0)
+                    {
+                        list.EventID = request.Event_Id;
+                    }
+                    else
+                    {
+                        list.EventID = d.tblEvent_Info.Where(x => x.Title == request.Title).LastOrDefault().Event_Id;
+                    }
                     list.EventContactRole = request.EventContactRole;
                     InsertEventRoster(list);
                 }
