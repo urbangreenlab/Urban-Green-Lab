@@ -7,6 +7,6 @@ namespace UrbanLab.Requests
 {
     public class ContactResult
     {
-        
+        public string contactFirstName { get; set; }
     }
 }
