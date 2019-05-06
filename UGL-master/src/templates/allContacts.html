@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <div class="row">
+                <div class="col">
+                    <div class="save-edit">
+                        <i class="fa fa-plus"> Create</i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="save-edit">
+                        <i class="fa fa-edit"> Edit</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 contact-information">
+            <info data="thisContact"></info>
+        </div>
+        <div class="col-8 contact-list">
+            <div class="row">
+                <div class="col">
+                    <span class="column-label">
+                        Name
+                    </span>
+                </div>
+                <div class="col">
+                    <span class="column-label">
+                        Email
+                    </span>
+                </div>
+                <div class="col">
+                    <span class="column-label">
+                        Phone
+                    </span>
+                </div>
+                <div class="col">
+                    <span class="column-label">
+                        Contact Type
+                    </span>
+                </div>
+                <div class="col">
+                    <span class="column-label">
+                        Program Relation
+                    </span>
+                </div>
+                <div class="col">
+                    <span class="column-label">
+                        Organization
+                    </span>
+                </div>
+            </div>
+            <div ng-click="contactInfo(contact)" class="row" ng-repeat="contact in contacts">
+                <div class="col">
+                    {{contact.FirstName}}
+                </div>
+                <div class="col">
+                    {{contact.Email}}
+                </div>
+                <div class="col">
+                    {{contact.phone}}
+                </div>
+                <div class="col">
+                    {{contact.ContactType}}
+                </div>
+                <div class="col">
+                    {{contact.ProgramRelation}}
+                </div>
+                <div class="col">
+                    {{contact.Organization}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

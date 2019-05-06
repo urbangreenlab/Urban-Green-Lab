@@ -1,3 +1,122 @@
-<div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="eventCalendar"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <div class="row">
+                <div class="col">
+                    <div class="save-edit">
+                        <i class="fa fa-plus"> Create</i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="save-edit">
+                        <i class="fa fa-edit"> Edit</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 contact-information">
+            <div ng-show="thisEvent" class="row">
+                <form ng-init="contact" class="container-fluid form  contact-form">
+                    <div class="row">
+                        <span class="contact display-name"> <h2>{{thisEvent.Title}}</h2> </span>
+                        <div class="col-12">
+                            <div class="row address-label">
+                                Address: 
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    Street
+                                </div>
+                                <div class="col">
+                                    {{thisEvent.Addr_Street}}
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    City
+                                </div>
+                                <div class="col">
+                                    {{thisEvent.Addr_City}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    State
+                                </div>
+                                <div class="col-1">
+                                    {{thisEvent.Addr_State}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    Zip
+                                </div>
+                                <div class="col-4">
+                                    {{thisEvent.Addr_ZipCode}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    GPS Location
+                                </div>
+                                <div class="col">
+                                    {{thisEvent.GPS_Location}}
+                                </div>
+                            </div>
 
-<div>{{test}}</div>
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    Event Type
+                                </div>
+                                <div class="col">
+                                    {{thisEvent.Event_Type_Description }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    Event Duration
+                                </div>
+                                <div class="col">
+                                    {{thisEvent.Event_Duration }} Hrs
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    Status
+                                </div>
+                                <div class="col">
+                                    {{thisEvent.StatusDescription}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 address-label">
+                                    Primary Contact
+                                </div>
+                                <div class="col">
+                                    {{thisEvent.Primary_Contact_Name}}<br>
+                                    {{thisEvent.Primary_Contact_Number}}
+                                </div>
+                            </div>
+                            
+                          
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-8 contact-list">
+
+            <div>
+                <div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="eventCalendar"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
